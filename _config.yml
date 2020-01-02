@@ -3,14 +3,14 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: wgspring
 subtitle: ''
 description: 'wgspring的个人博客'
 keywords: 
   - 'wgspring'
   - 'blog'
 author: wgspring
-language: zh
+language: zh-cn
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -97,7 +97,8 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+## https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/DOCUMENTATION.md
+theme: tranquilpeak
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
