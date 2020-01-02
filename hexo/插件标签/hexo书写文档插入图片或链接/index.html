@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
     
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hexo">
-    <title>hexo书写文档插入图片或链接 - Hexo</title>
+    <meta name="generator" content="wgspring">
+    <title>hexo书写文档插入图片或链接 - wgspring</title>
     <meta name="author" content="wgspring">
     
         <meta name="keywords" content="wgspring,blog,">
@@ -15,14 +15,14 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wgspring","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"开启文章资源文件夹对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 config.yml 文件中的 post_asset_folder 选项设为 true 来打开。\n_config.yml1post_asset_folder: true\n\n插入资源当资源文件管理功能打开后，Hexo将会在你每一次通过 hexo new [layout] &lt;title&gt; 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。其中[..]内为可选项。\n\n插入路径  {% asset_path 同名文件夹下的文件路径 %} \n插入图片  {% asset_img 同名文件夹下的文件路径 [title] %} \n插入链接  {% asset_link 同名文件夹下的文件路径 [title] %} \n\n比如说：当你打开文章资源文件夹功能后，你把一个 example.jpg 图片放在了你的资源文件夹中。然后插入\n{% asset_img example.jpg This is an example image %}\n通过这种方式，图片将会同时出现在文章和主页以及归档页中。\n","dateCreated":"2019-12-29T21:18:03+08:00","dateModified":"2020-01-01T14:33:58+08:00","datePublished":"2019-12-29T21:18:03+08:00","description":"","headline":"hexo书写文档插入图片或链接","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"},"publisher":{"@type":"Organization","name":"wgspring","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wgspring","sameAs":["https://github.com/wgspring","mailto"]},"articleBody":"开启文章资源文件夹对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 config.yml 文件中的 post_asset_folder 选项设为 true 来打开。\n_config.yml1post_asset_folder: true\n\n插入资源当资源文件管理功能打开后，Hexo将会在你每一次通过 hexo new [layout] &lt;title&gt; 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。其中[..]内为可选项。\n\n插入路径  {% asset_path 同名文件夹下的文件路径 %} \n插入图片  {% asset_img 同名文件夹下的文件路径 [title] %} \n插入链接  {% asset_link 同名文件夹下的文件路径 [title] %} \n\n比如说：当你打开文章资源文件夹功能后，你把一个 example.jpg 图片放在了你的资源文件夹中。然后插入\n{% asset_img example.jpg This is an example image %}\n通过这种方式，图片将会同时出现在文章和主页以及归档页中。\n","dateCreated":"2019-12-29T21:18:03+08:00","dateModified":"2020-01-01T14:33:58+08:00","datePublished":"2019-12-29T21:18:03+08:00","description":"","headline":"hexo书写文档插入图片或链接","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"},"publisher":{"@type":"Organization","name":"wgspring","sameAs":["https://github.com/wgspring","mailto"]},"url":"https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"}</script>
     <meta name="description" content="开启文章资源文件夹对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 config.yml 文件中的 post_asset_folder 选项设为 true 来打开。 _config.yml1post_asset_folder: true  插入资源当资源文件管理功能打">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="hexo书写文档插入图片或链接">
 <meta property="og:url" content="https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="wgspring">
 <meta property="og:description" content="开启文章资源文件夹对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 config.yml 文件中的 post_asset_folder 选项设为 true 来打开。 _config.yml1post_asset_folder: true  插入资源当资源文件管理功能打">
-<meta property="og:locale" content="zh">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-29T13:18:03.000Z">
 <meta property="article:modified_time" content="2020-01-01T06:33:58.067Z">
 <meta property="article:author" content="wgspring">
@@ -66,7 +66,7 @@
             href="/%20"
             aria-label=""
         >
-            Hexo
+            wgspring
         </a>
     </div>
     
@@ -74,7 +74,7 @@
             <a
                 class="header-right-picture "
                 href="#about"
-                aria-label="پیوند را باز کنید: /#about"
+                aria-label="打开链接: /#about"
             >
         
         
@@ -94,13 +94,13 @@
                 <li class="sidebar-button">
                     
                         <a  class="sidebar-button-link "
-                             href="/%20"
+                             href="/index.html"
                             
-                            title="خانه"
+                            title="首页"
                         >
                     
                         <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">خانه</span>
+                        <span class="sidebar-button-desc">首页</span>
                     </a>
             </li>
             
@@ -109,11 +109,11 @@
                         <a  class="sidebar-button-link "
                              href="/all-categories"
                             
-                            title="دسته‌بندی‌ها"
+                            title="分类"
                         >
                     
                         <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">دسته‌بندی‌ها</span>
+                        <span class="sidebar-button-desc">分类</span>
                     </a>
             </li>
             
@@ -122,11 +122,11 @@
                         <a  class="sidebar-button-link "
                              href="/all-tags"
                             
-                            title="برچسب‌ها"
+                            title="标签"
                         >
                     
                         <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">برچسب‌ها</span>
+                        <span class="sidebar-button-desc">标签</span>
                     </a>
             </li>
             
@@ -135,11 +135,11 @@
                         <a  class="sidebar-button-link "
                              href="/all-archives"
                             
-                            title="آرشیو مطالب"
+                            title="归档"
                         >
                     
                         <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">آرشیو مطالب</span>
+                        <span class="sidebar-button-desc">归档</span>
                     </a>
             </li>
             
@@ -148,11 +148,11 @@
                         <a  class="sidebar-button-link open-algolia-search"
                              href="#search"
                             
-                            title="جست‌و‌جو"
+                            title="搜索"
                         >
                     
                         <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">جست‌و‌جو</span>
+                        <span class="sidebar-button-desc">搜索</span>
                     </a>
             </li>
             
@@ -161,11 +161,11 @@
                         <a  class="sidebar-button-link "
                              href="#about"
                             
-                            title="درباره"
+                            title="关于"
                         >
                     
                         <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">درباره</span>
+                        <span class="sidebar-button-desc">关于</span>
                     </a>
             </li>
             
@@ -175,55 +175,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="گیت‌هاب">
+                        <a  class="sidebar-button-link " href="https://github.com/wgspring" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">گیت‌هاب</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="توییتر">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">توییتر</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="فیسبوک">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">فیسبوک</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="گوگل پلاس">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">گوگل پلاس</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="لینکداین">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">لینکداین</span>
+                        <span class="sidebar-button-desc">GitHub</span>
                     </a>
             </li>
             
@@ -231,28 +186,11 @@
                     
                         <a  class="sidebar-button-link "
                              href="/mailto"
-                            title="ایمیل"
+                            title="邮箱"
                         >
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">ایمیل</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a  class="sidebar-button-link "
-                             href="/atom.xml"
-                            
-                            title="RSS"
-                        >
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
+                        <span class="sidebar-button-desc">邮箱</span>
                     </a>
             </li>
             
@@ -280,11 +218,11 @@
         <div class="post-meta">
     <time datetime="2019-12-29T21:18:03+08:00">
 	
-		    Sunday، 29 Dec 2019
+		    12月 29, 2019
     	
     </time>
     
-        <span>در </span>
+        <span>发布在 </span>
         
     <a class="category-link" href="/categories/hexo/">hexo</a>, <a class="category-link" href="/categories/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/">插件标签</a>
 
@@ -329,11 +267,11 @@
                     class="post-action-btn btn btn--default tooltip--top"
                     href="/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E5%BC%95%E7%94%A8/"
                     data-tooltip="hexo书写文档插入代码块和引用"
-                    aria-label="قبلی: hexo书写文档插入代码块和引用"
+                    aria-label="上一篇: hexo书写文档插入代码块和引用"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="hide-xs hide-sm text-small icon-ml">قبلی</span>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
                     </a>
             </li>
             <li class="post-action">
@@ -343,7 +281,7 @@
                         aria-hidden="true"
                     >
                         
-                        <span class="hide-xs hide-sm text-small icon-mr">بعدی</span>
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>
             </li>
@@ -354,7 +292,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -366,8 +304,8 @@
                 <a
                     class="post-action-btn btn btn--default"
                     target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
-                    title="در فیسبوک به اشتراک بگذارید"
-                    aria-label="در فیسبوک به اشتراک بگذارید"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
                 >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
@@ -379,8 +317,8 @@
                 <a
                     class="post-action-btn btn btn--default"
                     target="new" href="https://twitter.com/intent/tweet?text=https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
-                    title="در توییتر به اشتراک بگذارید"
-                    aria-label="در توییتر به اشتراک بگذارید"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
                 >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
@@ -392,8 +330,8 @@
                 <a
                     class="post-action-btn btn btn--default"
                     target="new" href="https://plus.google.com/share?url=https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
-                    title="در گوگل پلاس به اشتراک بگذارید"
-                    aria-label="در گوگل پلاس به اشتراک بگذارید"
+                    title="分享到 Google+"
+                    aria-label="分享到 Google+"
                 >
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
@@ -404,7 +342,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -441,11 +379,11 @@
                     class="post-action-btn btn btn--default tooltip--top"
                     href="/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E5%BC%95%E7%94%A8/"
                     data-tooltip="hexo书写文档插入代码块和引用"
-                    aria-label="قبلی: hexo书写文档插入代码块和引用"
+                    aria-label="上一篇: hexo书写文档插入代码块和引用"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="hide-xs hide-sm text-small icon-ml">قبلی</span>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
                     </a>
             </li>
             <li class="post-action">
@@ -455,7 +393,7 @@
                         aria-hidden="true"
                     >
                         
-                        <span class="hide-xs hide-sm text-small icon-mr">بعدی</span>
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>
             </li>
@@ -466,7 +404,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -478,8 +416,8 @@
                 <a
                     class="post-action-btn btn btn--default"
                     target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
-                    title="در فیسبوک به اشتراک بگذارید"
-                    aria-label="در فیسبوک به اشتراک بگذارید"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
                 >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
@@ -491,8 +429,8 @@
                 <a
                     class="post-action-btn btn btn--default"
                     target="new" href="https://twitter.com/intent/tweet?text=https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
-                    title="در توییتر به اشتراک بگذارید"
-                    aria-label="در توییتر به اشتراک بگذارید"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
                 >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
@@ -504,8 +442,8 @@
                 <a
                     class="post-action-btn btn btn--default"
                     target="new" href="https://plus.google.com/share?url=https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
-                    title="در گوگل پلاس به اشتراک بگذارید"
-                    aria-label="در گوگل پلاس به اشتراک بگذارید"
+                    title="分享到 Google+"
+                    aria-label="分享到 Google+"
                 >
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
@@ -516,7 +454,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -538,9 +476,9 @@
                         class="share-option-btn"
                         target="new"
                         href="https://www.facebook.com/sharer/sharer.php?u=https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
-                        aria-label="در فیسبوک به اشتراک بگذارید"
+                        aria-label="分享到 Facebook"
                     >
-                        <i class="fab fa-facebook" aria-hidden="true"></i><span>در فیسبوک به اشتراک بگذارید</span>
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>分享到 Facebook</span>
                     </a>
                 </li>
             
@@ -551,9 +489,9 @@
                         class="share-option-btn"
                         target="new"
                         href="https://twitter.com/intent/tweet?text=https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
-                        aria-label="در توییتر به اشتراک بگذارید"
+                        aria-label="分享到 Twitter"
                     >
-                        <i class="fab fa-twitter" aria-hidden="true"></i><span>در توییتر به اشتراک بگذارید</span>
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
                     </a>
                 </li>
             
@@ -564,9 +502,9 @@
                         class="share-option-btn"
                         target="new"
                         href="https://plus.google.com/share?url=https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
-                        aria-label="در گوگل پلاس به اشتراک بگذارید"
+                        aria-label="分享到 Google+"
                     >
-                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>در گوگل پلاس به اشتراک بگذارید</span>
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>分享到 Google+</span>
                     </a>
                 </li>
             
@@ -587,14 +525,14 @@
         
             <h4 id="about-card-name">wgspring</h4>
         
-            <div id="about-card-bio"><p>یادداشت‌های یه المپیاد کامپیوتری در حال یادگیری لینوکس!</p>
+            <div id="about-card-bio"><p>author.bio</p>
 </div>
         
         
             <div id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>المپیادی، برنامه نویس!</p>
+                <p>author.job</p>
 
             </div>
         
@@ -604,7 +542,7 @@
 
         
         
-<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+<div id="cover" style="background-image:url('/assets/images/cover-v1.2.0.jpg');"></div>
         <!--SCRIPTS-->
 
 <script src="/assets/js/script-sz3sxionvszurexlutkltvtcs6eo6soswf2uxgpgtd3dk9dmc1rbsivd5qvg.min.js"></script>
