@@ -27,3 +27,10 @@ post_asset_folder: true
 `{% raw %}{% asset_img example.jpg This is an example image %}{% endraw %}`
 
 通过这种方式，图片将会同时出现在文章和主页以及归档页中。
+
+## 备注
+
+如果插入的是url链接和图片，则规则和原Markdown规则一致。
+- 插入图片：`![title](url)`
+- 插入链接：`[title](url)`
+

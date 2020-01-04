@@ -90,4 +90,20 @@
 		],
 		"description": "insert url"
 	},
+	"InsertImage2": {
+		"scope": "markdown",
+		"prefix": "md_img",
+		"body": [
+			"![$2]($1)"
+		],
+		"description": "insert img by markdown"
+	},
+	"InsertUrl2": {
+		"scope": "markdown",
+		"prefix": "md_url",
+		"body": [
+			"[$2]($1)"
+		],
+		"description": "insert url by markdown"
+	},
 }
