@@ -12,10 +12,12 @@
         <meta name="keywords" content="wgspring,blog,">
     
     
+        <link rel="icon" href="https://wgspring.github.io/assets/images/avator.png">
+    
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wgspring","sameAs":["https://github.com/wgspring","mailto"]},"articleBody":"\n1. 生成可执行文件\n2. 生成对象文件 – *.o\n\n2.1. 对象文件到可执行文件\n\n\n3. 编译预处理\n4. 生成汇编指令\n5. 生成静态库\n\n5.1. 静态库到可执行文件\n\n\n6. 生成动态库\n\n6.1. 动态库到可执行文件\n6.2. 查看可执行程序链接了哪些库\n\n\n\n\n以下教程只适合linux系统\n 1. 生成可执行文件\n当要求生成可执行文件时，要求代码里面一定要包含main函数，为程序入口。\n\n\n如果为单文件，例如main.cpp，执行：\n\ng++ main.cpp\n\n则会生成一个a.out文件，该文件即为可执行文件。终端执行./a.out即可\n\n\n如果希望生成的文件名可以指定，则可以使用-o参数执行：\n\ng++ main.cpp -o main\n\n其中main即为你期望生成的文件名\n\n\n如果为多个文件，可以使用g++ *.cpp来通配所有cpp文件\n\n\n 2. 生成对象文件 – *.o\n选项 -c 用来告诉编译器编译源代码但不要执行链接，输出结果为对象文件。文件默认名与源码文件名相同，只是将其后缀变为 .o。\ng++ -c main.cpp\n上述命令会生成main.o\n 2.1. 对象文件到可执行文件\n命令 g++ 能够直接识别 .o 文件并将其作为输入文件传递给链接器。\ng++ main.o或则g++ main.o -o main\n生成可执行文件a.out或则main\n 3. 编译预处理\n选项 -E 使 g++ 将源代码用编译预处理器处理后不再执行其他动作。\ng++ -E main.cpp\n上述命令不会生成文件，只会打印预处理的信息，如果要保存到文件可以附加使用-o选项\n 4. 生成汇编指令\n选项 -S 指示编译器将程序编译成汇编语言，输出汇编语言代码而後结束。\ng++ -S main.cpp\n 5. 生成静态库\n静态库是编译器生成的一系列对象文件(*.o文件)的集合。链接一个程序时用库中的对象文件还是目录中的对象文件都是一样的。库中的成员包括普通函数，类定义，类的对象实例等等。静态库的另一个名字叫归档文件(archive)，管理这种归档文件的工具叫 ar 。\nar -r mylib.a object1.o object2.o\n 5.1. 静态库到可执行文件\n命令 g++ 能够直接识别静态库 .a 文件并将其作为输入文件传递给链接器。\ng++ mylib.a\n 6. 生成动态库\ng++ one.cpp two.cpp three.cpp -fPIC -shared -o libtest.so\n\n\n-shared：该选项指定生成动态连接库（让连接器生成T类型的导出符号表，有时候也生成弱连接W类型的导出符号），不用该标志外部程序无法连接。相当于一个可执行文件\n\n\n-fPIC：表示编译为位置独立的代码，不用此选项的话编译后的代码是位置相关的所以动态载入时是通过代码拷贝的方式来满足不同进程的需要，而不能达到真正代码段共享的目的。\n\n\n 6.1. 动态库到可执行文件\n例如讲main.cpp和动态库libtest.so一起链接\ng++ main.cpp -L. -ltest -o main\n\n-L.：表示要连接的库在当前目录中，-L指定动态库目录，.表示当前目录\n-ltest：编译器查找动态连接库时有隐含的命名规则，即在给出的名字前面加上lib，后面加上.so来确定库的名称。-l指定连接的动态库名称，test表示libtest.so这个文件。\n\n 6.2. 查看可执行程序链接了哪些库\nldd main\n","dateCreated":"2020-01-04T10:20:38+08:00","dateModified":"2020-01-05T15:31:34+08:00","datePublished":"2020-01-04T10:20:38+08:00","description":"","headline":"g++的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://wgspring.github.io/g/g++%E7%9A%84%E4%BD%BF%E7%94%A8/"},"publisher":{"@type":"Organization","name":"wgspring","sameAs":["https://github.com/wgspring","mailto"]},"url":"https://wgspring.github.io/g/g++%E7%9A%84%E4%BD%BF%E7%94%A8/"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wgspring","sameAs":["https://github.com/wgspring","mailto:wgspring@mail.ustc.edu.cn"],"image":"avator.png"},"articleBody":"\n1. 生成可执行文件\n2. 生成对象文件 – *.o\n\n2.1. 对象文件到可执行文件\n\n\n3. 编译预处理\n4. 生成汇编指令\n5. 生成静态库\n\n5.1. 静态库到可执行文件\n\n\n6. 生成动态库\n\n6.1. 动态库到可执行文件\n6.2. 查看可执行程序链接了哪些库\n\n\n\n\n以下教程只适合linux系统\n 1. 生成可执行文件\n当要求生成可执行文件时，要求代码里面一定要包含main函数，为程序入口。\n\n\n如果为单文件，例如main.cpp，执行：\n\ng++ main.cpp\n\n则会生成一个a.out文件，该文件即为可执行文件。终端执行./a.out即可\n\n\n如果希望生成的文件名可以指定，则可以使用-o参数执行：\n\ng++ main.cpp -o main\n\n其中main即为你期望生成的文件名\n\n\n如果为多个文件，可以使用g++ *.cpp来通配所有cpp文件\n\n\n 2. 生成对象文件 – *.o\n选项 -c 用来告诉编译器编译源代码但不要执行链接，输出结果为对象文件。文件默认名与源码文件名相同，只是将其后缀变为 .o。\ng++ -c main.cpp\n上述命令会生成main.o\n 2.1. 对象文件到可执行文件\n命令 g++ 能够直接识别 .o 文件并将其作为输入文件传递给链接器。\ng++ main.o或则g++ main.o -o main\n生成可执行文件a.out或则main\n 3. 编译预处理\n选项 -E 使 g++ 将源代码用编译预处理器处理后不再执行其他动作。\ng++ -E main.cpp\n上述命令不会生成文件，只会打印预处理的信息，如果要保存到文件可以附加使用-o选项\n 4. 生成汇编指令\n选项 -S 指示编译器将程序编译成汇编语言，输出汇编语言代码而後结束。\ng++ -S main.cpp\n 5. 生成静态库\n静态库是编译器生成的一系列对象文件(*.o文件)的集合。链接一个程序时用库中的对象文件还是目录中的对象文件都是一样的。库中的成员包括普通函数，类定义，类的对象实例等等。静态库的另一个名字叫归档文件(archive)，管理这种归档文件的工具叫 ar 。\nar -r mylib.a object1.o object2.o\n 5.1. 静态库到可执行文件\n命令 g++ 能够直接识别静态库 .a 文件并将其作为输入文件传递给链接器。\ng++ mylib.a\n 6. 生成动态库\ng++ one.cpp two.cpp three.cpp -fPIC -shared -o libtest.so\n\n\n-shared：该选项指定生成动态连接库（让连接器生成T类型的导出符号表，有时候也生成弱连接W类型的导出符号），不用该标志外部程序无法连接。相当于一个可执行文件\n\n\n-fPIC：表示编译为位置独立的代码，不用此选项的话编译后的代码是位置相关的所以动态载入时是通过代码拷贝的方式来满足不同进程的需要，而不能达到真正代码段共享的目的。\n\n\n 6.1. 动态库到可执行文件\n例如讲main.cpp和动态库libtest.so一起链接\ng++ main.cpp -L. -ltest -o main\n\n-L.：表示要连接的库在当前目录中，-L指定动态库目录，.表示当前目录\n-ltest：编译器查找动态连接库时有隐含的命名规则，即在给出的名字前面加上lib，后面加上.so来确定库的名称。-l指定连接的动态库名称，test表示libtest.so这个文件。\n\n 6.2. 查看可执行程序链接了哪些库\nldd main\n","dateCreated":"2020-01-04T10:20:38+08:00","dateModified":"2020-01-05T15:31:34+08:00","datePublished":"2020-01-04T10:20:38+08:00","description":"","headline":"g++的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://wgspring.github.io/g/g++%E7%9A%84%E4%BD%BF%E7%94%A8/"},"publisher":{"@type":"Organization","name":"wgspring","sameAs":["https://github.com/wgspring","mailto:wgspring@mail.ustc.edu.cn"],"image":"avator.png","logo":{"@type":"ImageObject","url":"avator.png"}},"url":"https://wgspring.github.io/g/g++%E7%9A%84%E4%BD%BF%E7%94%A8/"}</script>
     <meta name="description" content="1. 生成可执行文件 2. 生成对象文件 – *.o  2.1. 对象文件到可执行文件   3. 编译预处理 4. 生成汇编指令 5. 生成静态库  5.1. 静态库到可执行文件   6. 生成动态库  6.1. 动态库到可执行文件 6.2. 查看可执行程序链接了哪些库     以下教程只适合linux系统  1. 生成可执行文件 当要求生成可执行文件时，要求代码里面一定要包含main函数，为程">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="g++的使用">
@@ -33,6 +35,8 @@
     
         
     
+    
+        <meta property="og:image" content="https://wgspring.github.io/assets/images/avator.png"/>
     
     
     
@@ -60,8 +64,6 @@
             <!-- Define author's picture -->
 
 
-    
-
 <header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
@@ -76,11 +78,13 @@
     
         
             <a
-                class="header-right-picture "
-                href="#about"
-                aria-label="打开链接: /#about"
+                class="header-right-icon open-algolia-search"
+                href="#search"
+                aria-label="打开链接: /#search"
             >
         
+        
+            <i class="fa fa-search fa-lg"></i>
         
         </a>
     
@@ -89,8 +93,26 @@
             <!-- Define author's picture -->
 
 
+
+        
+    
+
 <nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="阅读有关作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/avator.png" alt="作者的图片"/>
+                </a>
+                <h4 class="sidebar-profile-name">wgspring</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>宁可死别，绝不生离</p>
+</h5>
+                
+            </div>
         
         
             <ul class="sidebar-buttons">
@@ -187,10 +209,7 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/mailto"
-                            title="邮箱"
-                        >
+                        <a  class="sidebar-button-link " href="mailto:wgspring@mail.ustc.edu.cn" target="_blank" rel="noopener" title="邮箱">
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">邮箱</span>
@@ -660,25 +679,37 @@
         
 
 
+    
+        
+    
+
 <div id="about">
     <div id="about-card">
         <div id="about-btn-close">
             <i class="fa fa-times"></i>
         </div>
         
+            <img id="about-card-picture" src="/assets/images/avator.png" alt="作者的图片"/>
+        
             <h4 id="about-card-name">wgspring</h4>
         
-            <div id="about-card-bio"><p>author.bio</p>
+            <div id="about-card-bio"><p>宁可死别，绝不生离</p>
 </div>
         
         
             <div id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>author.job</p>
+                <p>搬砖的</p>
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                China
+            </div>
         
     </div>
 </div>
