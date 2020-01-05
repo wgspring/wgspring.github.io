@@ -6,6 +6,8 @@ categories:
 tags: 
 ---
 
+@[TOC]
+
 以下教程只适合`linux`系统
 
 ## 1. 生成可执行文件
