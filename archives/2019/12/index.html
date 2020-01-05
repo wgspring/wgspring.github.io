@@ -59,7 +59,7 @@
     <div class="header-title">
         <a
             class="header-title-link"
-            href="/%20"
+            href="/"
             aria-label=""
         >
             wgspring
@@ -237,8 +237,8 @@
             
                 <div class="postShorten-content">
                     <p>使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。</p>
-<h2 id="插入代码块"><a href="#插入代码块" class="headerlink" title="插入代码块"></a>插入代码块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock [title] [lang:language] [option: value] %&#125;</span><br><span class="line">代码内容</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="插入代码块"><a class="markdownIt-Anchor" href="#插入代码块"></a> 插入代码块</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock [title] [lang:language] [option: value] %&#125;</span><br><span class="line">代码内容</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
 <p><code>[..]</code>内为可选项。其中 <code>[option: value]</code>有以下选项:</p>
 <table>
 <thead>
@@ -248,7 +248,8 @@
 <th>Default</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>line_number</code></td>
 <td>Show line number</td>
 <td><code>true</code></td>
@@ -265,29 +266,31 @@
 </tr>
 <tr>
 <td><code>mark</code></td>
-<td>Line highlight specific line(s), each value separated by a comma. Specify number range using a dashExample: <code>mark:1,4-7,10</code> will mark line 1, 4 to 7 and 10.</td>
+<td>Line highlight specific line(s), each value separated by a comma. Specify number range using a dashExample: <code>mark:1,4-7,10</code> will mark line 1, 4 to 7 and 10.</td>
 <td></td>
 </tr>
 <tr>
 <td><code>wrap</code></td>
-<td>Wrap the code block in <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table" target="_blank" rel="noopener"><code>&lt;table&gt;</code></a></td>
+<td>Wrap the code block in <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table" target="_blank" rel="noopener"><code>&lt;table&gt;</code></a></td>
 <td><code>true</code></td>
 </tr>
-</tbody></table>
-<h2 id="插入引用"><a href="#插入引用" class="headerlink" title="插入引用"></a>插入引用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] %&#125;</span><br><span class="line">引用内容</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
-
+</tbody>
+</table>
+<h2 id="插入引用"><a class="markdownIt-Anchor" href="#插入引用"></a> 插入引用</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] %&#125;</span><br><span class="line">引用内容</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
 <p><code>[..]</code>内为可选项。</p>
-<h2 id="插入图片和链接"><a href="#插入图片和链接" class="headerlink" title="插入图片和链接"></a>插入图片和链接</h2><p>要想能够正确使用，需要将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p>
+<h2 id="插入图片和链接"><a class="markdownIt-Anchor" href="#插入图片和链接"></a> 插入图片和链接</h2>
+<p>要想能够正确使用，需要将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p>
 <figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>插入路径 <code> {% asset_path 同名文件夹下的文件路径 %} </code></li>
 <li>插入图片 <code> {% asset_img 同名文件夹下的文件路径 [title] %} </code></li>
 <li>插入链接 <code> {% asset_link 同名文件夹下的文件路径 [title] %} </code></li>
 </ul>
-<h2 id="插入url链接"><a href="#插入url链接" class="headerlink" title="插入url链接"></a>插入url链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% link title url %&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>另外还有一起其他不常用插件标签 <a href="https://hexo.io/zh-cn/docs/tag-plugins" title="" target="">传送门</a></p>
+<h2 id="插入url链接"><a class="markdownIt-Anchor" href="#插入url链接"></a> 插入url链接</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% link title url %&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a class="markdownIt-Anchor" href="#其他"></a> 其他</h2>
+<p>另外还有一起其他不常用插件标签 <a href="https://hexo.io/zh-cn/docs/tag-plugins" title="" target="">传送门</a></p>
 
                     
                         
@@ -345,10 +348,11 @@
             </div>
             
                 <div class="postShorten-content">
-                    <h2 id="开启文章资源文件夹"><a href="#开启文章资源文件夹" class="headerlink" title="开启文章资源文件夹"></a>开启文章资源文件夹</h2><p>对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p>
+                    <h2 id="开启文章资源文件夹"><a class="markdownIt-Anchor" href="#开启文章资源文件夹"></a> 开启文章资源文件夹</h2>
+<p>对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p>
 <figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="插入资源"><a href="#插入资源" class="headerlink" title="插入资源"></a>插入资源</h2><p>当资源文件管理功能打开后，<code>Hexo</code>将会在你每一次通过 <code>hexo new [layout] &lt;title&gt;</code> 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。其中<code>[..]</code>内为可选项。</p>
+<h2 id="插入资源"><a class="markdownIt-Anchor" href="#插入资源"></a> 插入资源</h2>
+<p>当资源文件管理功能打开后，<code>Hexo</code>将会在你每一次通过 <code>hexo new [layout] &lt;title&gt;</code> 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。其中<code>[..]</code>内为可选项。</p>
 <ul>
 <li>插入路径 <code> {% asset_path 同名文件夹下的文件路径 %} </code></li>
 <li>插入图片 <code> {% asset_img 同名文件夹下的文件路径 [title] %} </code></li>
@@ -357,7 +361,8 @@
 <p>比如说：当你打开文章资源文件夹功能后，你把一个 example.jpg 图片放在了你的资源文件夹中。然后插入</p>
 <p><code>{% asset_img example.jpg This is an example image %}</code></p>
 <p>通过这种方式，图片将会同时出现在文章和主页以及归档页中。</p>
-<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>如果插入的是url链接和图片，则规则和原Markdown规则一致。</p>
+<h2 id="备注"><a class="markdownIt-Anchor" href="#备注"></a> 备注</h2>
+<p>如果插入的是url链接和图片，则规则和原Markdown规则一致。</p>
 <ul>
 <li>插入图片：<code>![title](url)</code></li>
 <li>插入链接：<code>[title](url)</code></li>

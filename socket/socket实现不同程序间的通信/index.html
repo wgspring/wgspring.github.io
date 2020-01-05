@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="wgspring">
-    <title>归档: 2020 - wgspring</title>
+    <title>socket实现不同程序间的通信 - wgspring</title>
     <meta name="author" content="wgspring">
     
         <meta name="keywords" content="wgspring,blog,">
@@ -15,18 +15,27 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <script type="application/ld+json">{}</script>
-    <meta name="description" content="wgspring的个人博客">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wgspring","sameAs":["https://github.com/wgspring","mailto"]},"articleBody":"\n1. 进程\n2. TCP通信交互流程\n3. C++实现socket通信\n\n3.1. Server实现\n3.2. Client实现\n3.3. 运行效果\n\n\n4. C#实现socket通信\n\n4.1. Server实现\n4.2. client实现\n4.3. 运行效果\n\n\n5. C++和C#之间的通信\n\n\n 1. 进程\n当我们运行一个程序时，操作系统会为该程序启动一个进程来执行。比较直观的感受，可以通过打开Windows的任务管理器，或则Linux系统终端执行top查看进程。\n\n每一个应用程序是一个独立的进程，拥有自己独立的资源，如果我们期望他们之间发生通信，则可以通过socket通信来实现。socket能够实现网络通信，也就是跨设备的应用间通信。例如计算机A上的QQ和计算机B上的QQ就是采用socket通信的。\n 2. TCP通信交互流程\n说到网络通信，不得不提到计算机网络中的通信协议。关于TCP和UDP的区别不在本篇讨论范围之内。本文主要讲解通过socket使用TCP协议实现进程通信。下图展示了socket通信过程。\n\n 3. C++实现socket通信\n 3.1. Server实现\nServer.cpp1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586#include &lt;iostream&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#include &lt;errno.h&gt;#include &lt;sys/types.h&gt;#include &lt;sys/socket.h&gt;#include &lt;netinet/in.h&gt;#include &lt;unistd.h&gt;using namespace std;#define MAXLINE 4096int main()&#123;    int server_socket, client_connect;    char buff[MAXLINE];    int status;    // 1. 创建socket    server_socket = socket(AF_INET, SOCK_STREAM, 0);    if (server_socket == -1)    &#123;        cout &lt;&lt; \"create socket failed! \" &lt;&lt; strerror(errno) &lt;&lt; \"错误码：\" &lt;&lt; errno &lt;&lt; endl;        return -1;    &#125;    // 2. 设置端口号为6666    struct sockaddr_in address;    memset(&amp;address, 0, sizeof(address)); // 初始化servaddr所在内存为全0    address.sin_family = AF_INET;    address.sin_addr.s_addr = htonl(INADDR_ANY); // 本机预使用的IP任意    address.sin_port = htons(6666);    // 3. 绑定端口号到socket上面    status = bind(server_socket, (struct sockaddr *)&amp;address, sizeof(address));    if (status == -1)    &#123;        cout &lt;&lt; \"bind socket failed! \" &lt;&lt; strerror(errno) &lt;&lt; \"错误码：\" &lt;&lt; errno &lt;&lt; endl;        return -1;    &#125;    // 4. 监听端口号    status = listen(server_socket, 10);    if (status == -1)    &#123;        cout &lt;&lt; \"listen socket failed! \" &lt;&lt; strerror(errno) &lt;&lt; \"错误码：\" &lt;&lt; errno &lt;&lt; endl;        return -1;    &#125;    cout &lt;&lt; \"======waiting for client's request======\" &lt;&lt; endl;    // 5. 接受客户端的连接请求    client_connect = accept(server_socket, (struct sockaddr *)NULL, NULL);    if (client_connect == -1)    &#123;        cout &lt;&lt; \"accept socket failed! \" &lt;&lt; strerror(errno) &lt;&lt; \"错误码：\" &lt;&lt; errno &lt;&lt; endl;        return -1;    &#125;    cout &lt;&lt; \"some one connected!!\" &lt;&lt; endl;    // 6. 发送消息    char sendline[] = \"welcome!\";    status = send(client_connect, sendline, strlen(sendline), 0);    if (status &lt; 0)    &#123;        cout &lt;&lt; \"send msg failed! \" &lt;&lt; strerror(errno) &lt;&lt; \"错误码：\" &lt;&lt; errno &lt;&lt; endl;        return -1;    &#125;    // 7. 一直接收消息    while (true)    &#123;        int n = recv(client_connect, buff, MAXLINE, 0);        if (n == 0) //当信息长度为0，说明客户端连接断开            break;        buff[n] = '\\0'; // 设置文本终止符        cout &lt;&lt; \"recv msg from client: \" &lt;&lt; buff &lt;&lt; endl;    &#125;    // 8. 关闭连接和服务器    close(client_connect);    close(server_socket);    return 0;&#125;\n 3.2. Client实现\nClient.cpp1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374#include &lt;iostream&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#include &lt;errno.h&gt;#include &lt;sys/types.h&gt;#include &lt;sys/socket.h&gt;#include &lt;netinet/in.h&gt;#include &lt;arpa/inet.h&gt;#include &lt;unistd.h&gt;#define MAXLINE 4096using namespace std;int main()&#123;    int client_socket;    char buff[MAXLINE];    int status;    // 1. 创建socket    client_socket = socket(AF_INET, SOCK_STREAM, 0);    if (client_socket &lt; 0)    &#123;        cout &lt;&lt; \"create socket failed! \" &lt;&lt; strerror(errno) &lt;&lt; \"错误码：\" &lt;&lt; errno &lt;&lt; endl;        return -1;    &#125;    // 2. 设置端口号为6666    struct sockaddr_in address;    memset(&amp;address, 0, sizeof(address));    address.sin_family = AF_INET;    address.sin_port = htons(6666);    // 3. 设置访问ip    status = inet_pton(AF_INET, \"127.0.0.1\", &amp;address.sin_addr);    if (status &lt;= 0)    &#123;        cout &lt;&lt; \"inet_pton error! \" &lt;&lt; strerror(errno) &lt;&lt; \"错误码：\" &lt;&lt; errno &lt;&lt; endl;        return -1;    &#125;    // 4. 连接    status = connect(client_socket, (struct sockaddr *)&amp;address, sizeof(address));    if (status &lt; 0)    &#123;        cout &lt;&lt; \"connect failed! \" &lt;&lt; strerror(errno) &lt;&lt; \"错误码：\" &lt;&lt; errno &lt;&lt; endl;        return -1;    &#125;    // 5. 接收消息    int n = recv(client_socket, buff, MAXLINE, 0);    buff[n] = '\\0';    cout &lt;&lt; \"recv msg from Server: \" &lt;&lt; buff &lt;&lt; endl;    // 6. 一直发送消息    while (true)    &#123;        cout &lt;&lt; \"Client: \";        fgets(buff, MAXLINE, stdin);        if (string(buff) == \"quit\\n\")            break;        status = send(client_socket, buff, strlen(buff), 0);        if (status &lt; 0)        &#123;            cout &lt;&lt; \"send msg failed! \" &lt;&lt; strerror(errno) &lt;&lt; \"错误码：\" &lt;&lt; errno &lt;&lt; endl;            return -1;        &#125;    &#125;    // 7. 关闭客户端    close(client_socket);    return 0;&#125;\n 3.3. 运行效果\n\n编译：\n\n12g++ Server.cpp -o Serverg++ Client.cpp -o Client\n\n先运行Server，再另起终端运行Client：\n\n1./Server\n1./Client\n\n在Client上面发送信息\n\n\n 4. C#实现socket通信\n 4.1. Server实现\nServer.cs123456789101112131415161718192021222324252627282930313233343536373839404142434445using System;using System.Net;using System.Net.Sockets;using System.Text;namespace tcpserver&#123;    class server    &#123;        [STAThread]        static void Main(string[] args)        &#123;            const int max_length = 4096;            byte[] data = new byte[max_length]; //用于缓存客户端所发送的信息,通过socket传递的信息必须为字节数组            // 1. 建立socket            Socket server_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);            // 2. 设置ip和端口            IPEndPoint ipep = new IPEndPoint(IPAddress.Any, 6666);//本机预使用的IP和端口            // 3. 绑定端口            server_socket.Bind(ipep);//绑定            // 4. 监听端口            server_socket.Listen(10);//监听            Console.WriteLine(\"waiting for a client\");            // 5. 接受客户端的连接请求            Socket client_connect = server_socket.Accept();//当有可用的客户端连接尝试时执行，并返回一个新的socket,用于与客户端之间的通信            Console.WriteLine(\"some one connected!!\");            // 6. 发送消息            string welcome = \"welcome here!\";            data = Encoding.ASCII.GetBytes(welcome);   // 字符串转字节数组            client_connect.Send(data, data.Length, SocketFlags.None);            // 7. 一直接收消息            while (true)            &#123;                int n = client_connect.Receive(data);                if (n == 0)     //当信息长度为0，说明客户端连接断开                    break;                string s = Encoding.ASCII.GetString(data, 0, n); // 字节数组转字符串                Console.WriteLine(\"recv msg from client: \" + s);            &#125;            // 8. 关闭连接和socket            client_connect.Close();            server_socket.Close();        &#125;    &#125;&#125;\n 4.2. client实现\nClient.cs123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051using System;using System.Net;using System.Net.Sockets;using System.Text;namespace tcpclient&#123;    class client    &#123;        [STAThread]        static void Main(string[] args)        &#123;            const int max_length = 4096;            byte[] data = new byte[max_length];            // 1. 创建socket            Socket client_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);            // 2. 设置端口和设置需要访问的ip            IPEndPoint ie = new IPEndPoint(IPAddress.Parse(\"127.0.0.1\"), 6666);//服务器的IP和端口            // 3. 连接            try            &#123;                //因为客户端只是用来向特定的服务器发送信息，所以不需要绑定本机的IP和端口。不需要监听。                client_socket.Connect(ie);            &#125;            catch (SocketException e)            &#123;                Console.WriteLine(\"unable to connect to server\");                Console.WriteLine(e.ToString());                return;            &#125;            // 4. 接收消息            int n = client_socket.Receive(data);            string stringdata = Encoding.ASCII.GetString(data, 0, n);            Console.WriteLine(\"recv msg from Server: \" + stringdata);            // 5. 一直发送消息            while (true)            &#123;                Console.Write(\"Client: \");                string input = Console.ReadLine();                if (input == \"quit\")                    break;                data = Encoding.ASCII.GetBytes(input);     // 字符串转字节数组                client_socket.Send(data, data.Length, SocketFlags.None);            &#125;            // 6. 关闭            client_socket.Shutdown(SocketShutdown.Both);            client_socket.Close();        &#125;    &#125;&#125;\n 4.3. 运行效果\n\n编译：\n\n12mcs Server.csmcs Client.cs\n\n先运行Server，再另起终端运行Client：\n\n1mono Server.exe\n1mono Client.exe\n\n在Client上面发送信息\n\n\n 5. C++和C#之间的通信\n文章开篇介绍过，socket实现的是两进程之间的通信，没必要server和client都是同一个语言实现。只要server和client之间的通信协议一致就能够保证通信。前文介绍的都是基于TCP协议的，故无论server的语言和client的语言是否一致都可以通信。\n下面演示使用c++版本的server和c#版本的client进行通信。\n\n","dateCreated":"2020-01-05T07:14:49+08:00","dateModified":"2020-01-05T15:30:40+08:00","datePublished":"2020-01-05T07:14:49+08:00","description":"","headline":"socket实现不同程序间的通信","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"},"publisher":{"@type":"Organization","name":"wgspring","sameAs":["https://github.com/wgspring","mailto"]},"url":"https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/","keywords":"c++, c#, socket"}</script>
+    <meta name="description" content="1. 进程 2. TCP通信交互流程 3. C++实现socket通信  3.1. Server实现 3.2. Client实现 3.3. 运行效果   4. C#实现socket通信  4.1. Server实现 4.2. client实现 4.3. 运行效果   5. C++和C#之间的通信    1. 进程 当我们运行一个程序时，操作系统会为该程序启动一个进程来执行。比较直观的感受，可以通">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="wgspring">
-<meta property="og:url" content="https://wgspring.github.io/archives/2020/index.html">
+<meta property="og:title" content="socket实现不同程序间的通信">
+<meta property="og:url" content="https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/index.html">
 <meta property="og:site_name" content="wgspring">
-<meta property="og:description" content="wgspring的个人博客">
+<meta property="og:description" content="1. 进程 2. TCP通信交互流程 3. C++实现socket通信  3.1. Server实现 3.2. Client实现 3.3. 运行效果   4. C#实现socket通信  4.1. Server实现 4.2. client实现 4.3. 运行效果   5. C++和C#之间的通信    1. 进程 当我们运行一个程序时，操作系统会为该程序启动一个进程来执行。比较直观的感受，可以通">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/wgspring/FigureBed/master/blog/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/20200105151639.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wgspring/FigureBed/master/blog/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/20200105151718.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wgspring/FigureBed/master/blog/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/20200105151816.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wgspring/FigureBed/master/blog/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/20200105151839.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wgspring/FigureBed/master/blog/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/20200105151849.png">
+<meta property="article:published_time" content="2020-01-04T23:14:49.096Z">
+<meta property="article:modified_time" content="2020-01-05T07:30:40.541Z">
 <meta property="article:author" content="wgspring">
-<meta property="article:tag" content="wgspring">
-<meta property="article:tag" content="blog">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="c#">
+<meta property="article:tag" content="socket">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wgspring/FigureBed/master/blog/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/20200105151639.png">
     
     
         
@@ -45,6 +54,12 @@
     
 
     
+        
+            
+<link rel="stylesheet" href="/assets/css/gitalk.css">
+
+        
+    
 </head>
 
     <body>
@@ -54,7 +69,7 @@
 
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a
@@ -81,7 +96,7 @@
             <!-- Define author's picture -->
 
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
         
@@ -195,30 +210,22 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
-                            aria-label=": socket实现不同程序间的通信"
-                        >
-                            socket实现不同程序间的通信
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            socket实现不同程序间的通信
+        </h1>
+    
+    
+        <div class="post-meta">
     <time datetime="2020-01-05T07:14:49+08:00">
 	
 		    1月 05, 2020
@@ -233,10 +240,13 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-content">
-                    <p><ul class="markdownIt-TOC">
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p><ul class="markdownIt-TOC">
 <li><a href="#1-%E8%BF%9B%E7%A8%8B">1. 进程</a></li>
 <li><a href="#2-tcp%E9%80%9A%E4%BF%A1%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B">2. TCP通信交互流程</a></li>
 <li><a href="#3-c%E5%AE%9E%E7%8E%B0socket%E9%80%9A%E4%BF%A1">3. C++实现socket通信</a>
@@ -306,178 +316,147 @@
 <p>下面演示使用c++版本的server和c#版本的client进行通信。</p>
 <p><img src="https://raw.githubusercontent.com/wgspring/FigureBed/master/blog/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/20200105151849.png" alt="" /></p>
 
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
             
+
+
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/g/g++%E7%9A%84%E4%BD%BF%E7%94%A8/"
-                            aria-label=": g++的使用"
-                        >
-                            g++的使用
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-01-04T10:20:38+08:00">
-	
-		    1月 04, 2020
-    	
-    </time>
-    
-        <span>发布在 </span>
-        
-    <a class="category-link" href="/categories/g/">g++</a>
-
-
-    
-</div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/c/" rel="tag">c#</a> <a class="tag tag--primary tag--small t-link" href="/tags/c/" rel="tag">c++</a> <a class="tag tag--primary tag--small t-link" href="/tags/socket/" rel="tag">socket</a>
 
             </div>
-            
-                <div class="postShorten-content">
-                    <p><ul class="markdownIt-TOC">
-<li><a href="#1-%E7%94%9F%E6%88%90%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6">1. 生成可执行文件</a></li>
-<li><a href="#2-%E7%94%9F%E6%88%90%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6-o">2. 生成对象文件 – *.o</a>
-<ul>
-<li><a href="#21-%E5%AF%B9%E8%B1%A1%E6%96%87%E4%BB%B6%E5%88%B0%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6">2.1. 对象文件到可执行文件</a></li>
-</ul>
-</li>
-<li><a href="#3-%E7%BC%96%E8%AF%91%E9%A2%84%E5%A4%84%E7%90%86">3. 编译预处理</a></li>
-<li><a href="#4-%E7%94%9F%E6%88%90%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4">4. 生成汇编指令</a></li>
-<li><a href="#5-%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%BA%93">5. 生成静态库</a>
-<ul>
-<li><a href="#51-%E9%9D%99%E6%80%81%E5%BA%93%E5%88%B0%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6">5.1. 静态库到可执行文件</a></li>
-</ul>
-</li>
-<li><a href="#6-%E7%94%9F%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93">6. 生成动态库</a>
-<ul>
-<li><a href="#61-%E5%8A%A8%E6%80%81%E5%BA%93%E5%88%B0%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6">6.1. 动态库到可执行文件</a></li>
-<li><a href="#62-%E6%9F%A5%E7%9C%8B%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F%E9%93%BE%E6%8E%A5%E4%BA%86%E5%93%AA%E4%BA%9B%E5%BA%93">6.2. 查看可执行程序链接了哪些库</a></li>
-</ul>
-</li>
-</ul>
-</p>
-<p>以下教程只适合<code>linux</code>系统</p>
-<h2 id="1-生成可执行文件"><a class="markdownIt-Anchor" href="#1-生成可执行文件"></a> 1. 生成可执行文件</h2>
-<p>当要求生成可执行文件时，要求代码里面一定要包含main函数，为程序入口。</p>
-<ol>
-<li>
-<p>如果为单文件，例如<code>main.cpp</code>，执行：</p>
-<ul>
-<li><code>g++ main.cpp</code></li>
-</ul>
-<p>则会生成一个<code>a.out</code>文件，该文件即为可执行文件。终端执行<code>./a.out</code>即可</p>
-</li>
-<li>
-<p>如果希望生成的文件名可以指定，则可以使用<code>-o</code>参数执行：</p>
-<ul>
-<li><code>g++ main.cpp -o main</code></li>
-</ul>
-<p>其中<code>main</code>即为你期望生成的文件名</p>
-</li>
-<li>
-<p>如果为多个文件，可以使用<code>g++ *.cpp</code>来通配所有cpp文件</p>
-</li>
-</ol>
-<h2 id="2-生成对象文件-o"><a class="markdownIt-Anchor" href="#2-生成对象文件-o"></a> 2. 生成对象文件 – *.o</h2>
-<p>选项 -c 用来告诉编译器编译源代码但不要执行链接，输出结果为对象文件。文件默认名与源码文件名相同，只是将其后缀变为 .o。</p>
-<p><code>g++ -c main.cpp</code></p>
-<p>上述命令会生成<code>main.o</code></p>
-<h3 id="21-对象文件到可执行文件"><a class="markdownIt-Anchor" href="#21-对象文件到可执行文件"></a> 2.1. 对象文件到可执行文件</h3>
-<p>命令 g++ 能够直接识别 .o 文件并将其作为输入文件传递给链接器。</p>
-<p><code>g++ main.o</code>或则<code>g++ main.o -o main</code></p>
-<p>生成可执行文件<code>a.out</code>或则<code>main</code></p>
-<h2 id="3-编译预处理"><a class="markdownIt-Anchor" href="#3-编译预处理"></a> 3. 编译预处理</h2>
-<p>选项 -E 使 g++ 将源代码用编译预处理器处理后不再执行其他动作。</p>
-<p><code>g++ -E main.cpp</code></p>
-<p>上述命令不会生成文件，只会打印预处理的信息，如果要保存到文件可以附加使用<code>-o</code>选项</p>
-<h2 id="4-生成汇编指令"><a class="markdownIt-Anchor" href="#4-生成汇编指令"></a> 4. 生成汇编指令</h2>
-<p>选项 -S 指示编译器将程序编译成汇编语言，输出汇编语言代码而後结束。</p>
-<p><code>g++ -S main.cpp</code></p>
-<h2 id="5-生成静态库"><a class="markdownIt-Anchor" href="#5-生成静态库"></a> 5. 生成静态库</h2>
-<p>静态库是编译器生成的一系列对象文件(<code>*.o文件</code>)的集合。链接一个程序时用库中的对象文件还是目录中的对象文件都是一样的。库中的成员包括普通函数，类定义，类的对象实例等等。静态库的另一个名字叫归档文件(archive)，管理这种归档文件的工具叫 ar 。</p>
-<p><code>ar -r mylib.a object1.o object2.o</code></p>
-<h3 id="51-静态库到可执行文件"><a class="markdownIt-Anchor" href="#51-静态库到可执行文件"></a> 5.1. 静态库到可执行文件</h3>
-<p>命令 g++ 能够直接识别静态库 <code>.a</code> 文件并将其作为输入文件传递给链接器。</p>
-<p><code>g++ mylib.a</code></p>
-<h2 id="6-生成动态库"><a class="markdownIt-Anchor" href="#6-生成动态库"></a> 6. 生成动态库</h2>
-<p><code>g++ one.cpp two.cpp three.cpp -fPIC -shared -o libtest.so</code></p>
-<ul>
-<li>
-<p><code>-shared</code>：该选项指定生成动态连接库（让连接器生成T类型的导出符号表，有时候也生成弱连接W类型的导出符号），不用该标志外部程序无法连接。相当于一个可执行文件</p>
-</li>
-<li>
-<p><code>-fPIC</code>：表示编译为位置独立的代码，不用此选项的话编译后的代码是位置相关的所以动态载入时是通过代码拷贝的方式来满足不同进程的需要，而不能达到真正代码段共享的目的。</p>
-</li>
-</ul>
-<h3 id="61-动态库到可执行文件"><a class="markdownIt-Anchor" href="#61-动态库到可执行文件"></a> 6.1. 动态库到可执行文件</h3>
-<p>例如讲<code>main.cpp</code>和动态库<code>libtest.so</code>一起链接</p>
-<p><code>g++ main.cpp -L. -ltest -o main</code></p>
-<ul>
-<li><code>-L.</code>：表示要连接的库在当前目录中，<code>-L</code>指定动态库目录，<code>.</code>表示当前目录</li>
-<li><code>-ltest</code>：编译器查找动态连接库时有隐含的命名规则，即在给出的名字前面加上lib，后面加上.so来确定库的名称。<code>-l</code>指定连接的动态库名称，<code>test</code>表示<code>libtest.so</code>这个文件。</li>
-</ul>
-<h3 id="62-查看可执行程序链接了哪些库"><a class="markdownIt-Anchor" href="#62-查看可执行程序链接了哪些库"></a> 6.2. 查看可执行程序链接了哪些库</h3>
-<p><code>ldd main</code></p>
-
-                    
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
                         
-
-
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
                     
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/g/g++%E7%9A%84%E4%BD%BF%E7%94%A8/"
+                    data-tooltip="g++的使用"
+                    aria-label="下一篇: g++的使用"
+                >
                     
-                        <p>
-                            <a
-                                href="/g/g++%E7%9A%84%E4%BD%BF%E7%94%A8/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
             
-        </div>
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
         
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/&amp;title=socket实现不同程序间的通信"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://widget.renren.com/dialog/share?resourceUrl=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                    title="分享到 Renren"
+                    aria-label="分享到 Renren"
+                >
+                    <i class="fab fa-renren" aria-hidden="true"></i>
+                </a>
+            </li>
         
         
-        <li class="pagination-number">第 1 页 共 1 页</li>
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+                <div id="gitalk"></div>
+
+            
+        
+    </div>
+</article>
 
 
 
@@ -488,6 +467,187 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/g/g++%E7%9A%84%E4%BD%BF%E7%94%A8/"
+                    data-tooltip="g++的使用"
+                    aria-label="下一篇: g++的使用"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/&amp;title=socket实现不同程序间的通信"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://widget.renren.com/dialog/share?resourceUrl=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                    title="分享到 Renren"
+                    aria-label="分享到 Renren"
+                >
+                    <i class="fab fa-renren" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://service.weibo.com/share/share.php?&amp;title=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                        aria-label="分享到 Weibo"
+                    >
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>分享到 Weibo</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://connect.qq.com/widget/shareqq/index.html?url=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/&amp;title=socket实现不同程序间的通信"
+                        aria-label="分享到 QQ"
+                    >
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>分享到 QQ</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                        aria-label="分享到 Qzone"
+                    >
+                        <i class="fa fa-star" aria-hidden="true"></i><span>分享到 Qzone</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://widget.renren.com/dialog/share?resourceUrl=https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                        aria-label="分享到 Renren"
+                    >
+                        <i class="fab fa-renren" aria-hidden="true"></i><span>分享到 Renren</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
             
         </div>
         
@@ -525,6 +685,25 @@
 
 <!--SCRIPTS END-->
 
+
+    
+        
+<script src="/assets/js/gitalk.js"></script>
+
+        <script type="text/javascript">
+          (function() {
+            new Gitalk({
+              clientID: '8de8a914ca1077b781c4',
+              clientSecret: '74679b709fdc4d57c9f99d8d3db876215f6befe0',
+              repo: 'wgspring.github.io',
+              owner: 'wgspring',
+              admin: ['wgspring'],
+              id: 'socket/socket实现不同程序间的通信/',
+              ...{"language":"en","perPage":10,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
+            }).render('gitalk')
+          })()
+        </script>
+    
 
 
 
