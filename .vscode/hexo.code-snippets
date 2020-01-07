@@ -34,7 +34,7 @@
 		"scope": "markdown",
 		"prefix": "hx_img",
 		"body": [
-			"{% asset_img ${1:url} \"${2:title}\" %} $0",
+			"{% asset_img ${1:url}.png \"${1:title}\" %} $0",
 		],
 		"description": "insert asset img"
 	},
