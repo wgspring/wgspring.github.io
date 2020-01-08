@@ -17,16 +17,16 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wgspring","sameAs":["https://github.com/wgspring","mailto:wgspring@mail.ustc.edu.cn"],"image":"avator.png"},"articleBody":"使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。\n 插入代码块\n123&#123;% codeblock [title] [lang:language] [option: value] %&#125;代码内容&#123;% endcodeblock %&#125;\n[..]内为可选项。其中 [option: value]有以下选项:\n\n\n\nExtra Options\nDescription\nDefault\n\n\n\n\nline_number\nShow line number\ntrue\n\n\nhighlight\nEnable code highlighting\ntrue\n\n\nfirst_line\nSpecify the first line number\n1\n\n\nmark\nLine highlight specific line(s), each value separated by a comma. Specify number range using a dashExample: mark:1,4-7,10 will mark line 1, 4 to 7 and 10.\n\n\n\nwrap\nWrap the code block in &lt;table&gt;\ntrue\n\n\n\n 插入引用\n123&#123;% blockquote [author[, source]] %&#125;引用内容&#123;% endblockquote %&#125;\n[..]内为可选项。\n 插入图片和链接\n要想能够正确使用，需要将 config.yml 文件中的 post_asset_folder 选项设为 true 来打开。\n_config.yml1post_asset_folder: true\n\n插入路径  {% asset_path 同名文件夹下的文件路径 %} \n插入图片  {% asset_img 同名文件夹下的文件路径 [title] %} \n插入链接  {% asset_link 同名文件夹下的文件路径 [title] %} \n\n 插入url链接\n1&#123;% link title url %&#125;\n 其他\n另外还有一起其他不常用插件标签 传送门\n","dateCreated":"2019-12-31T22:50:55+08:00","dateModified":"2020-01-07T23:16:25+08:00","datePublished":"2019-12-31T22:50:55+08:00","description":"","headline":"hexo书写文档插入代码块和引用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E5%BC%95%E7%94%A8/"},"publisher":{"@type":"Organization","name":"wgspring","sameAs":["https://github.com/wgspring","mailto:wgspring@mail.ustc.edu.cn"],"image":"avator.png","logo":{"@type":"ImageObject","url":"avator.png"}},"url":"https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E5%BC%95%E7%94%A8/"}</script>
-    <meta name="description" content="使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。  插入代码块 123&amp;#123;% codeblock [title] [lang:language] [option: value] %&amp;#125;代码内容&amp;#123;% endcodeblock %&amp;#125; [..]内为可选项。其中 [option: valu">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wgspring","sameAs":["https://github.com/wgspring","mailto:wgspring@mail.ustc.edu.cn"],"image":"avator.png"},"articleBody":"使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。\n\n 插入代码块\n123&#123;% codeblock [title] [lang:language] [option: value] %&#125;代码内容&#123;% endcodeblock %&#125;\n[..]内为可选项。其中 [option: value]有以下选项:\n\n\n\nExtra Options\nDescription\nDefault\n\n\n\n\nline_number\nShow line number\ntrue\n\n\nhighlight\nEnable code highlighting\ntrue\n\n\nfirst_line\nSpecify the first line number\n1\n\n\nmark\nLine highlight specific line(s), each value separated by a comma. Specify number range using a dashExample: mark:1,4-7,10 will mark line 1, 4 to 7 and 10.\n\n\n\nwrap\nWrap the code block in &lt;table&gt;\ntrue\n\n\n\n 插入引用\n123&#123;% blockquote [author[, source]] %&#125;引用内容&#123;% endblockquote %&#125;\n[..]内为可选项。\n 插入图片和链接\n要想能够正确使用，需要将 config.yml 文件中的 post_asset_folder 选项设为 true 来打开。\n_config.yml1post_asset_folder: true\n\n插入路径  {% asset_path 同名文件夹下的文件路径 %} \n插入图片  {% asset_img 同名文件夹下的文件路径 [title] %} \n插入链接  {% asset_link 同名文件夹下的文件路径 [title] %} \n\n 插入url链接\n1&#123;% link title url %&#125;\n 其他\n另外还有一起其他不常用插件标签 传送门\n","dateCreated":"2019-12-31T22:50:55+08:00","dateModified":"2020-01-08T23:02:42+08:00","datePublished":"2019-12-31T22:50:55+08:00","description":"使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。","headline":"hexo书写文档插入代码块和引用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E5%BC%95%E7%94%A8/"},"publisher":{"@type":"Organization","name":"wgspring","sameAs":["https://github.com/wgspring","mailto:wgspring@mail.ustc.edu.cn"],"image":"avator.png","logo":{"@type":"ImageObject","url":"avator.png"}},"url":"https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E5%BC%95%E7%94%A8/"}</script>
+    <meta name="description" content="使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="hexo书写文档插入代码块和引用">
 <meta property="og:url" content="https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E5%BC%95%E7%94%A8/index.html">
 <meta property="og:site_name" content="wgspring">
-<meta property="og:description" content="使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。  插入代码块 123&amp;#123;% codeblock [title] [lang:language] [option: value] %&amp;#125;代码内容&amp;#123;% endcodeblock %&amp;#125; [..]内为可选项。其中 [option: valu">
+<meta property="og:description" content="使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-31T14:50:55.000Z">
-<meta property="article:modified_time" content="2020-01-07T15:16:25.697Z">
+<meta property="article:modified_time" content="2020-01-08T15:02:42.631Z">
 <meta property="article:author" content="wgspring">
 <meta property="article:tag" content="wgspring">
 <meta property="article:tag" content="blog">
@@ -51,10 +51,6 @@
     
 
     
-        
-            
-<link rel="stylesheet" href="/assets/css/gitalk.css">
-
         
     
 </head>
@@ -259,6 +255,7 @@
     <div class="post-content markdown">
         <div class="main-content-wrap">
             <p>使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。</p>
+<a id="more"></a>
 <h2 id="插入代码块"><a class="markdownIt-Anchor" href="#插入代码块"></a> 插入代码块</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock [title] [lang:language] [option: value] %&#125;</span><br><span class="line">代码内容</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
 <p><code>[..]</code>内为可选项。其中 <code>[option: value]</code>有以下选项:</p>
@@ -418,17 +415,29 @@
                 </a>
             </li>
         
+        <span id="{{ .URL | relURL }}/" class="leancloud_visitors" data-flag-title="{{ .Title }}">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+        </span>
         
             
-                <li class="post-action">
-                    <a
-                        class="post-action-btn btn btn--default"
-                        href="#gitalk"
-                        aria-label="Kommentieren"
-                    >
-                        <i class="fa fa-comment"></i>
-                    </a>
-                </li>
+            <!-- id 将作为查询条件 -->
+                <div id="vcomments"></div>
+                <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+                <script type="text/javascript">
+                    new Valine({
+                    el: '#vcomments',
+                    appId: 'E1J7Nec0u3x6QqK6C3STm4QR-gzGzoHsz',
+                    appKey: 'ftiitqIifrNBq5vhxDIOCXhK',
+                    notify: 'true',
+                    verify: 'false',
+                    avatar: 'mm',
+                    placeholder: '说点什么吧...',
+                    visitor: 'true'
+                    });
+                </script>
             
         
         <li class="post-action">
@@ -444,9 +453,6 @@
 
         
         
-            
-                <div id="gitalk"></div>
-
             
         
     </div>
@@ -559,17 +565,29 @@
                 </a>
             </li>
         
+        <span id="{{ .URL | relURL }}/" class="leancloud_visitors" data-flag-title="{{ .Title }}">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+        </span>
         
             
-                <li class="post-action">
-                    <a
-                        class="post-action-btn btn btn--default"
-                        href="#gitalk"
-                        aria-label="Kommentieren"
-                    >
-                        <i class="fa fa-comment"></i>
-                    </a>
-                </li>
+            <!-- id 将作为查询条件 -->
+                <div id="vcomments"></div>
+                <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+                <script type="text/javascript">
+                    new Valine({
+                    el: '#vcomments',
+                    appId: 'E1J7Nec0u3x6QqK6C3STm4QR-gzGzoHsz',
+                    appKey: 'ftiitqIifrNBq5vhxDIOCXhK',
+                    notify: 'true',
+                    verify: 'false',
+                    avatar: 'mm',
+                    placeholder: '说点什么吧...',
+                    visitor: 'true'
+                    });
+                </script>
             
         
         <li class="post-action">
@@ -695,23 +713,6 @@
 <!--SCRIPTS END-->
 
 
-    
-        
-<script src="/assets/js/gitalk.js"></script>
-
-        <script type="text/javascript">
-          (function() {
-            new Gitalk({
-              clientID: '8de8a914ca1077b781c4',
-              clientSecret: '74679b709fdc4d57c9f99d8d3db876215f6befe0',
-              repo: 'wgspring.github.io',
-              owner: 'wgspring',
-              admin: ['wgspring'],
-              id: 'hexo/插件标签/hexo书写文档插入代码块和引用/',
-              ...{"language":"en","perPage":10,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
-            }).render('gitalk')
-          })()
-        </script>
     
 
 
