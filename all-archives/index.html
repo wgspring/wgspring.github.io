@@ -115,6 +115,7 @@
                     
                         <a  class="sidebar-button-link "
                              href="/"
+                            
                             title="首页"
                         >
                     
@@ -349,6 +350,133 @@
 </div>
 
         
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">没有找到文章</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E9%93%BE%E6%8E%A5/"
+                            aria-label=": hexo书写文档插入图片或链接"
+                        >
+                            <h3 class="media-heading">hexo书写文档插入图片或链接</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019年12月29日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 <code>config.yml</code> 文件中的 <code>post_asset_folder</code> 选项设为 <code>true</code> 来打开。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://wgspring.github.io/hexo/%E6%8F%92%E4%BB%B6%E6%A0%87%E7%AD%BE/hexo%E4%B9%A6%E5%86%99%E6%96%87%E6%A1%A3%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E5%BC%95%E7%94%A8/"
+                            aria-label=": hexo书写文档插入代码块和引用"
+                        >
+                            <h3 class="media-heading">hexo书写文档插入代码块和引用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019年12月31日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://wgspring.github.io/g/g++%E7%9A%84%E4%BD%BF%E7%94%A8/"
+                            aria-label=": g++的使用"
+                        >
+                            <h3 class="media-heading">g++的使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2020年1月4日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc -->
+<p>本文介绍了c++ 编译工具 g++的使用。以下教程只适合<code>linux</code>系统</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://wgspring.github.io/socket/socket%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"
+                            aria-label=": socket实现不同程序间的通信"
+                        >
+                            <h3 class="media-heading">socket实现不同程序间的通信</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2020年1月5日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc -->
+<p>每一个应用程序是一个独立的进程，拥有自己独立的资源，如果我们期望他们之间发生通信，则可以通过socket通信来实现。socket能够实现网络通信，也就是跨设备的应用间通信。例如计算机A上的QQ和计算机B上的QQ就是采用socket通信的。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="没有找到文章"
+                data-message-one="找到 1 篇文章"
+                data-message-other="找到 {n} 篇文章">
+                找到 4 篇文章
+            </p>
+        </div>
+    </div>
+</div>
+
+        
         
 <div id="cover" style="background-image:url('/assets/images/cover-v1.2.0.jpg');"></div>
         <!--SCRIPTS-->
@@ -359,6 +487,17 @@
 
 
 
+
+    
+<script src="/assets/js/moment-with-locales.js"></script>
+
+    
+<script src="/assets/js/algoliasearch.js"></script>
+
+    <script>
+      var algoliaClient = algoliasearch('O1HERKE8Q2', '8d0508419c37eadec93b32d24edd7aa8');
+      var algoliaIndex = algoliaClient.initIndex('wgspring&#39;s blog');
+    </script>
 
 
     </body>
