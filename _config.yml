@@ -116,3 +116,19 @@ markdown_it_plus:
   typographer:
   quotes: “”‘’
   pre_class: highlight
+
+algolia:
+  appId: "O1HERKE8Q2"
+  apiKey: "8d0508419c37eadec93b32d24edd7aa8"
+  adminApiKey: "68ae3fb3943b15fbcddb250574d5ba04"
+  chunkSize: 5000
+  indexName: "myblog"
+  fields: 
+    - content:strip:truncate,0,500
+    - excerpt:strip
+    - gallery
+    - permalink
+    - photos
+    - slug
+    - tags
+    - title
