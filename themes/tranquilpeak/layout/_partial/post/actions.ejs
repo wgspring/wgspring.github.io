@@ -96,6 +96,16 @@
                         <i class="fa fa-comment"></i>
                     </a>
                 </li>
+            <% } else if (theme.valine.enable) { %>
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#vcomments"
+                        aria-label="<%= __('post.comment') %>"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
             <% } %>
         <% } %>
         <li class="post-action">

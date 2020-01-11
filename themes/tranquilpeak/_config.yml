@@ -237,7 +237,7 @@ valine:
     appId: E1J7Nec0u3x6QqK6C3STm4QR-gzGzoHsz
     appKey: ftiitqIifrNBq5vhxDIOCXhK
     avatar: "mm" 
-    placeholder: "说点什么吧..."
+    placeholder: "欢迎评论留言，认真填写邮箱，你将收到我的邮件回复提醒。^_^"
     visitor: true
 
 # -------------------
