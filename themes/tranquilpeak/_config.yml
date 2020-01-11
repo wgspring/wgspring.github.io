@@ -32,7 +32,7 @@ sidebar:
     menu:
         home:
             title: global.home
-            url: ""
+            url: /
             icon: fa fa-home
         categories:
             title: global.categories
@@ -210,7 +210,7 @@ gitment:
 # Read https://github.com/gitalk/gitalk#options to set up Gitalk
 gitalk:
     # Switch
-    enable: true
+    enable: false
     # Your client ID:
     client_id: 8de8a914ca1077b781c4
     # Your client secret:
@@ -230,6 +230,15 @@ gitalk:
         distractionFreeMode: false
         enableHotKey: true
         pagerDirection: "first"
+
+# Valine.
+valine:
+    enable: true
+    appId: E1J7Nec0u3x6QqK6C3STm4QR-gzGzoHsz
+    appKey: ftiitqIifrNBq5vhxDIOCXhK
+    avatar: "mm" 
+    placeholder: "说点什么吧..."
+    visitor: true
 
 # -------------------
 # Integrated services

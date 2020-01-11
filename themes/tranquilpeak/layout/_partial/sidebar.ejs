@@ -33,7 +33,7 @@
                         <a  class="sidebar-button-link <% if (theme.sidebar[i][n].class) { %><%= theme.sidebar[i][n].class %><% } %>" href="<%- url_for(theme.sidebar[i][n].url) %>" target="_blank" rel="noopener" title="<%= __(theme.sidebar[i][n].title) %>">
                     <% } else { %>
                         <a  class="sidebar-button-link <% if (theme.sidebar[i][n].class) { %><%= theme.sidebar[i][n].class %><% } %>"
-                            <% if (theme.sidebar[i][n].url.indexOf("/") === 0 && theme.sidebar[i][n].url.length === 1) { %> href="<%- url_for(' ') %>"
+                            <% if (theme.sidebar[i][n].url.indexOf("/") === 0 && theme.sidebar[i][n].url.length === 1) { %> href="<%- url_for('') %>"
                             <% } else if (theme.sidebar[i][n].url.indexOf("/") === 0) { %> href="<%- url_for(theme.sidebar[i][n].url.substr(1)) %>"
                             <% } else { %> href="<%- url_for(theme.sidebar[i][n].url) %>"<% } %>
                             title="<%= __(theme.sidebar[i][n].title) %>"

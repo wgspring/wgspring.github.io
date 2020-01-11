@@ -7,7 +7,7 @@
    * @returns {*|boolean}
    */
   function isRemoteUrl(url) {
-    return url && url.indexOf('//') >= 0;
+    return url && (url.indexOf('//') >= 0 || url[0] === '/');
   }
 
   /**
