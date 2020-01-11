@@ -1,14 +1,15 @@
 ---
 title: hexo书写文档插入图片或链接
 date: 2019-12-29 21:18:03
+coverImage: https://isujin.com/wp-content/uploads/2018/03/wallhaven-606235.png
 categories:
     - hexo
     - 插件标签
 tags:
 ---
 
-## 开启文章资源文件夹
 对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 `config.yml` 文件中的 `post_asset_folder` 选项设为 `true` 来打开。
+<!-- more -->
 
 {% codeblock _config.yml lang:yml %}
 post_asset_folder: true

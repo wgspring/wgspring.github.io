@@ -1,14 +1,15 @@
 ---
 title: g++的使用
 date: 2020-01-04T10:20:38.546Z
+coverImage: https://isujin.com/wp-content/uploads/2018/03/wallhaven-606980.jpg
 categories: 
     - g++
 tags: 
 ---
 
-@[TOC]
-
-以下教程只适合`linux`系统
+<!-- toc -->
+本文介绍了c++ 编译工具 g++的使用。以下教程只适合`linux`系统
+<!-- more -->
 
 ## 1. 生成可执行文件
 

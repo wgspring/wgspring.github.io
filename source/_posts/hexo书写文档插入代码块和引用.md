@@ -1,6 +1,7 @@
 ---
 title: hexo书写文档插入代码块和引用
 date: 2019-12-31 22:50:55
+coverImage: https://isujin.com/wp-content/uploads/2018/03/wallhaven-608510.png
 categories:
     - hexo
     - 插件标签
@@ -8,6 +9,7 @@ tags:
 ---
 
 使用hexo编写博客时，使用Markdown语法来插入代码、引用、图片时有时候并不起作用，推荐使用hexo标签插件来实现相同功能。
+<!-- more -->
 
 ## 插入代码块
 

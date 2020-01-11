@@ -1,6 +1,7 @@
 ---
 title: socket实现不同程序间的通信
 date: 2020-01-05T07:14:49.096Z
+coverImage: https://isujin.com/wp-content/uploads/2018/03/wallhaven-630537.jpg
 categories: 
     - socket
 tags: 
@@ -8,8 +9,10 @@ tags:
     - c#
     - socket
 ---
+<!-- toc -->
 
-@[TOC]
+每一个应用程序是一个独立的进程，拥有自己独立的资源，如果我们期望他们之间发生通信，则可以通过socket通信来实现。socket能够实现网络通信，也就是跨设备的应用间通信。例如计算机A上的QQ和计算机B上的QQ就是采用socket通信的。
+<!-- more -->
 
 ## 1. 进程
 当我们运行一个程序时，操作系统会为该程序启动一个进程来执行。比较直观的感受，可以通过打开Windows的任务管理器，或则Linux系统终端执行`top`查看进程。
