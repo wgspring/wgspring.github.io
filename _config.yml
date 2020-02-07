@@ -15,7 +15,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://wgspring.github.io
+url: http://wgspring.cn
 root: /
 permalink: :category/:title/
 permalink_defaults:
@@ -103,7 +103,7 @@ theme: tranquilpeak
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/wgspring/wgspring.github.io.git
+  repo: root@182.92.188.47:/var/repo/hexo_static.git
   branch: master
 
 markdown_it_plus:
