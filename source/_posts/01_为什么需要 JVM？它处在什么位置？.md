@@ -1,7 +1,7 @@
 ---
 title: 01_为什么需要 JVM？它处在什么位置？
 date: 2020-02-12T06:11:03.881Z
-coverImage: 
+coverImage: https://i.loli.net/2020/02/12/SPgj91bQw2sadMA.jpg
 categories: 
     - Java
     - JVM

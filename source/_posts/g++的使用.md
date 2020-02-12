@@ -1,7 +1,7 @@
 ---
 title: g++的使用
 date: 2020-01-04T10:20:38.546Z
-coverImage: https://isujin.com/wp-content/uploads/2018/03/wallhaven-606980.jpg
+coverImage: https://i.loli.net/2020/02/12/OpfQvbim9lK83k5.jpg
 categories: 
     - g++
 tags: 

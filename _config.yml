@@ -15,7 +15,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://wgspring.cn
+url: http://182.92.188.47
 root: /
 permalink: :category/:title/
 permalink_defaults:
