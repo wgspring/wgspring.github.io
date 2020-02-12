@@ -37,6 +37,7 @@ sudo make install
 ``` shell
 下载最新版：libsodium-x.x.xx.tar.gz
 解压并进入文件夹
+./autogen.sh
 ./configure && make -j 
 sudo make install
 sudo ldconfig

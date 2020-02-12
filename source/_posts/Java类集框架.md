@@ -62,7 +62,7 @@ tags:
 
 ## 4. Queue接口
 
-说起`Stack`，你可能会迷惑`Queue`去哪了。在类集框架中，`Stack`是一个具体的实现类，继承于`Vector`，而`Queue`却仅仅是一个接口，继承于总接口`Collection`，并没有具体实现。如果需要实例化一个普通的`Queue`可以使用`ArrayList`来实例化。例如：`Queue<Integer> q = new ArrayList<>();`
+说起`Stack`，你可能会迷惑`Queue`去哪了。在类集框架中，`Stack`是一个具体的实现类，继承于`Vector`，而`Queue`却仅仅是一个接口，继承于总接口`Collection`，并没有具体实现。如果需要实例化一个普通的`Queue`可以使用`LinkedList`来实例化。例如：`Queue<Integer> q = new LinkedList<>();`
 
 ![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/Queue.png)
 
