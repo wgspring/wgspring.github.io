@@ -1,7 +1,7 @@
 ---
 title: Java类集框架
 date: 2020-02-07T06:52:07.015Z
-coverImage: 
+coverImage: https://i.loli.net/2020/02/13/LeDjEckTYG7AyWf.jpg
 categories: 
     - Java
     - 基础

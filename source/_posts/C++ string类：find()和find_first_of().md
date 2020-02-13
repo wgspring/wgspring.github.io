@@ -1,7 +1,7 @@
 ---
 title: C++ string类：find()和find_first_of()
 date: 2020-02-03T05:57:18.602Z
-coverImage: 
+coverImage: https://i.loli.net/2020/02/13/67HtLaOBjrXMDGh.jpg
 categories: 
     - cpp
     - string

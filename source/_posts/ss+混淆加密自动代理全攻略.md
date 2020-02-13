@@ -1,7 +1,7 @@
 ---
 title: ss+混淆加密自动代理全攻略
 date: 2020-01-23T09:49:57.793Z
-coverImage: 
+coverImage: https://i.loli.net/2020/02/13/nt7Tu1gfXMvFCJZ.jpg
 categories: 
     - ss
 tags: 
