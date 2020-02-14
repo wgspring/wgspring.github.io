@@ -1,7 +1,7 @@
 ---
 title: socket实现不同程序间的通信
 date: 2020-01-05T07:14:49.096Z
-coverImage: https://isujin.com/wp-content/uploads/2018/03/wallhaven-630537.jpg
+coverImage: https://i.loli.net/2020/02/14/OQq4v6JNdMsDHza.png
 categories: 
     - socket
 tags: 

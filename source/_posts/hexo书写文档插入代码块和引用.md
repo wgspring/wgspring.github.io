@@ -1,7 +1,7 @@
 ---
 title: hexo书写文档插入代码块和引用
 date: 2019-12-31 22:50:55
-coverImage: https://isujin.com/wp-content/uploads/2018/03/wallhaven-608510.png
+coverImage: https://i.loli.net/2020/02/14/pF23NmoO64KREuy.png
 categories:
     - hexo
     - 插件标签
