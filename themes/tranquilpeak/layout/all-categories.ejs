@@ -9,6 +9,13 @@ function displayCategoriesAndPosts(category) {
     var posts = category.posts;
     // get its child categories
     var childCategories = site.categories.find({'parent': category._id});
+
+    // 父分类中去除子分类的文章
+    childCategories.sort('name', 'asc').forEach(function(childCategory) {
+        var postsOfChildCategory = childCategory.posts;
+        posts = posts.filter(x => !postsOfChildCategory.find(y => y.path === x.path));
+    });
+
     // init its parents
     var boxCSSClass = '';
     if (category.parents === undefined) {
