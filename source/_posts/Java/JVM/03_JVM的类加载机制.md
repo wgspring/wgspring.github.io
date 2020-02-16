@@ -18,7 +18,7 @@ JVM 的类加载机制和 Java 的类加载机制类似，但 JVM 的类加载�
 
 现实中并不是说，我把一个文件修改成 .class 后缀，就能够被 JVM 识别。类的加载过程非常复杂，主要有这几个过程：加载、链接（验证、准备、解析）、初始化。
 
-![](/img/03_JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png)
+![](/img/Java/JVM/03_JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png)
 
 如图所示。**大多数情况下**，类会按照图中给出的顺序进行加载。下面我们就来分别介绍下这个过程。
 
@@ -160,7 +160,7 @@ b
 
 而对象初始化就不一样了。通常，我们在 new 一个新对象的时候，都会调用它的构造方法，就是 `<init>`，用来初始化对象的属性。每次新建对象的时候，都会执行。
 
-![](/img/03_JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/%E7%B1%BB%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E5%AF%B9%E8%B1%A1%E5%88%9D%E5%A7%8B%E5%8C%96.png)
+![](/img/Java/JVM/03_JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/%E7%B1%BB%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E5%AF%B9%E8%B1%A1%E5%88%9D%E5%A7%8B%E5%8C%96.png)
 
 所以，上面代码的 static 代码块只会执行一次，对象的构造方法执行两次。
 
@@ -202,7 +202,7 @@ b
 
 打个比方。有一个家族，都是一些听话的孩子。孙子想要买一块棒棒糖，最终都要经过爷爷过问，如果力所能及，爷爷就直接帮孙子买了。
 
-![](/img/03_JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6.png)
+![](/img/Java/JVM/03_JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6.png)
 
 另外可以看到，除了启动类加载器，每一个加载器都有一个parent，并没有所谓的双亲。但是由于翻译的问题，这个叫法已经非常普遍了，一定要注意背后的差别。
 
@@ -243,7 +243,7 @@ protected synchronized Class<?> loadClass(String name,boolean resolve)throws Cla
 
 #### 2.3.1. 案例一：tomcat
 
-![](/img/03_JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/Tomcat%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%9C%BA%E5%88%B6.png)
+![](/img/Java/JVM/03_JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/Tomcat%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%9C%BA%E5%88%B6.png)
 
 对于一些需要加载的非基础类，会由一个叫作 WebAppClassLoader 的类加载器优先加载。并不会传递给父类的加载器。等它加载不到的时候，再交给上层的 ClassLoader 进行加载。这个加载器用来隔绝不同应用的 .class 文件，比如你的两个应用，可能会依赖同一个第三方的不同版本，它们是相互没有影响的。
 

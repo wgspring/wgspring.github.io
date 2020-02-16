@@ -17,7 +17,7 @@ tags:
 ## 1. 进程
 当我们运行一个程序时，操作系统会为该程序启动一个进程来执行。比较直观的感受，可以通过打开Windows的任务管理器，或则Linux系统终端执行`top`查看进程。
 
-![](/img/socket实现不同程序间的通信/进程管理.png)
+![](/img/other/socket实现不同程序间的通信/进程管理.png)
 
 每一个应用程序是一个独立的进程，拥有自己独立的资源，如果我们期望他们之间发生通信，则可以通过socket通信来实现。socket能够实现网络通信，也就是跨设备的应用间通信。例如计算机A上的QQ和计算机B上的QQ就是采用socket通信的。
 
@@ -25,7 +25,7 @@ tags:
 
 说到网络通信，不得不提到计算机网络中的通信协议。关于TCP和UDP的区别不在本篇讨论范围之内。本文主要讲解通过socket使用TCP协议实现进程通信。下图展示了socket通信过程。
 
-![](/img/socket实现不同程序间的通信/socket通信过程.png)
+![](/img/other/socket实现不同程序间的通信/socket通信过程.png)
 
 ## 3. C++实现socket通信
 
@@ -217,7 +217,7 @@ g++ Client.cpp -o Client
 
 3. 在Client上面发送信息
 
-![](/img/socket实现不同程序间的通信/C++运行示例.png)
+![](/img/other/socket实现不同程序间的通信/C++运行示例.png)
 
 ## 4. C#实现socket通信
 
@@ -345,7 +345,7 @@ mono Client.exe
 
 3. 在Client上面发送信息
 
-![](/img/socket实现不同程序间的通信/CSharp运行示例.png)
+![](/img/other/socket实现不同程序间的通信/CSharp运行示例.png)
 
 ## 5. C++和C#之间的通信
 
@@ -353,4 +353,4 @@ mono Client.exe
 
 下面演示使用c++版本的server和c#版本的client进行通信。
 
-![](/img/socket实现不同程序间的通信/混合通信示例.png)
+![](/img/other/socket实现不同程序间的通信/混合通信示例.png)

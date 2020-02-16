@@ -26,7 +26,7 @@ tags:
 
 ## 1. 框架图概览
 
-![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/%E6%A1%86%E6%9E%B6%E5%9B%BE%E6%A6%82%E8%A7%88.png)
+![](/img/Java/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/%E6%A1%86%E6%9E%B6%E5%9B%BE%E6%A6%82%E8%A7%88.png)
 
 上图初看可能有点懵，别急，下面一点点细分。
 
@@ -38,33 +38,33 @@ tags:
 
 `Collection`接口之下除了两大接口，还有一个抽象类`AbstractCollection`，其中实现了大多数Collection接口。但是
 
-![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/Collection%E5%BC%80%E5%A7%8B.png)
+![](/img/Java/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/Collection%E5%BC%80%E5%A7%8B.png)
 
 ## 3. List接口
 
 `AbstractList`继承`AbstractCollection`并实现大多数`List`接口。类集框架中所有List的具体实现类均是从`AbstractList`这个抽象类继承而来。
 
-![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/AbstractList.png)
+![](/img/Java/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/AbstractList.png)
 `AbstractList`的具体实现子类有：
 - `ArrayList` -- 数据结构中有数组实现的动态列表
 - `Vector` -- 同上类似，但是是多线程安全的
 
 另外 `AbstractList`还有一个抽象子类 `AbstractSequentialList` ，提供了对数据元素的链式访问而不是随机访问。
 
-![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/AbstractList2.png)
+![](/img/Java/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/AbstractList2.png)
 
 在`AbstractSequentialList`抽象类下面有具体实现类`LinkedList`。`LinkedList`就是数据结构中用指针实现的链表。
 
 另外在`Vector`下面还有一个数据结构子类`Stack`。
 
-![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/List.png)
+![](/img/Java/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/List.png)
 
 
 ## 4. Queue接口
 
 说起`Stack`，你可能会迷惑`Queue`去哪了。在类集框架中，`Stack`是一个具体的实现类，继承于`Vector`，而`Queue`却仅仅是一个接口，继承于总接口`Collection`，并没有具体实现。如果需要实例化一个普通的`Queue`可以使用`LinkedList`来实例化。例如：`Queue<Integer> q = new LinkedList<>();`
 
-![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/Queue.png)
+![](/img/Java/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/Queue.png)
 
 ## 5. Set接口
 
@@ -77,14 +77,14 @@ tags:
     - 其下还有一个子类`LinkedHashSet`，采用hash链表实现
 - `TreeSet` -- 用红黑树实现，实现了`SortedSet`接口
 
-![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/Set.png)
+![](/img/Java/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/Set.png)
 
 
 ## 6. Map接口
 
 `Map`接口并非直接继承于`Collection`接口，因为`Map`不是集合，但是它们完全整合在集合中。`Map` 里存储的是键/值对，一般我们要求其`key`必须唯一，这就和`Set`及其类似。因此`Map`也和`Set`一样具有类似的继承结构。
 
-![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/Map.png)
+![](/img/Java/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/Map.png)
 
 ## 7. 数组操作类--Arrays
 
@@ -108,7 +108,7 @@ tags:
 
 迭代器，使你能够通过循环来得到或删除集合的元素。`ListIterator` 继承了`Iterator`，以允许双向遍历列表和修改元素。
 
-![](/img/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/%E8%BF%AD%E4%BB%A3%E5%99%A8.png)
+![](/img/Java/Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/%E8%BF%AD%E4%BB%A3%E5%99%A8.png)
 
 ## 9. 比较器
 

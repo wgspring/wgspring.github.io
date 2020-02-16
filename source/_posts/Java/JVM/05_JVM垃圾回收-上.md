@@ -26,7 +26,7 @@ JVM 的 GC 动作，是不受程序控制的，它会在满足条件的时候，
 
 如图所示，Obj5、Obj6、Obj7，由于不能和 GC Root 产生关联，发生 GC 时，就会被摧毁。
 
-![](/img/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/GC%20root%E5%BC%95%E7%94%A8%E9%93%BE.png)
+![](/img/Java/JVM/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/GC%20root%E5%BC%95%E7%94%A8%E9%93%BE.png)
 
 那么，什么样的对象，才会是 GC Root 呢？这不在于它是什么样的对象，而在于它所处的位置。
 
@@ -49,7 +49,7 @@ GC Roots 包括：
 - 用于同步的监控对象，比如调用了对象的 wait() 方法。
 - JNI handles，包括 global handles 和 local handles。
 
-![](/img/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/GC%20root%E7%A7%8D%E7%B1%BB.png)
+![](/img/Java/JVM/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/GC%20root%E7%A7%8D%E7%B1%BB.png)
 
 这些 GC Roots 大体可以分为三大类，下面这种说法更加好记一些：
 - 活动线程相关的各种引用。
@@ -64,7 +64,7 @@ GC Roots 包括：
 
 对象对于另外一个对象的引用，要看关系牢靠不牢靠，可能在链条的其中一环，就断掉了。
 
-![](/img/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/GC%20%E5%BC%95%E7%94%A8%E9%93%BE.png)
+![](/img/Java/JVM/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/GC%20%E5%BC%95%E7%94%A8%E9%93%BE.png)
 
 根据发生 GC 时，这条链条的表现，可以对这个引用关系进行更加细致的划分。
 
@@ -146,11 +146,11 @@ private static void startMonitoring(ReferenceQueue<MyObject> referenceQueue, Ref
 
 OOM 的全称是 Out Of Memory，那我们的内存区域有哪些会发生 OOM 呢？我们可以从内存区域划分图上，看一下彩色部分。
 
-![](/img/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/OOM%E5%9C%BA%E6%99%AF.png)
+![](/img/Java/JVM/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/OOM%E5%9C%BA%E6%99%AF.png)
 
 可以看到除了程序计数器，其他区域都有OOM溢出的可能。但是最常见的还是发生在堆上。
 
-![](/img/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/OOM%E5%9C%BA%E6%99%AF%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%98%AF%E5%90%A6%E7%A7%81%E6%9C%89.png)
+![](/img/Java/JVM/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/OOM%E5%9C%BA%E6%99%AF%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%98%AF%E5%90%A6%E7%A7%81%E6%9C%89.png)
 
 所以 OOM 到底是什么引起的呢？有几个原因：
 - 内存的容量太小了，需要扩容，或者需要调整堆的空间。
@@ -160,6 +160,6 @@ OOM 的全称是 Out Of Memory，那我们的内存区域有哪些会发生 OOM 
 
 典型的内存泄漏场景，原因在于对象没有及时的释放自己的引用。比如一个局部变量，被外部的静态集合引用。
 
-![](/img/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/%E9%9B%86%E5%90%88%E5%BC%95%E7%94%A8.png)
+![](/img/Java/JVM/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/%E9%9B%86%E5%90%88%E5%BC%95%E7%94%A8.png)
 
 因此我们在平常写代码时，一定要注意这种情况，千万不要为了方便把对象到处引用。即使引用了，也要在合适时机进行手动清理。

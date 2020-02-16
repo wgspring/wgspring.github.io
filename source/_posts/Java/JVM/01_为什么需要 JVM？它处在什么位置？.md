@@ -41,7 +41,7 @@ JVM 全称 Java Virtual Machine，也就是我们耳熟能详的 Java 虚拟机�
 
 Java 字节码一般都比较容易读懂，这从侧面上证明 Java 语言的抽象程度比较高。你可以把 JVM 认为是一个翻译器，会持续不断的翻译执行 Java 字节码，然后调用真正的操作系统函数，这些操作系统函数是与平台息息相关的。
 
-![](/img/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/JVM%E6%89%80%E5%A4%84%E4%BD%8D%E7%BD%AE.png)
+![](/img/Java/JVM/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/JVM%E6%89%80%E5%A4%84%E4%BD%8D%E7%BD%AE.png)
 
 从图中可以看到，有了 JVM 这个抽象层之后，Java 就可以实现跨平台了。JVM 只需要保证能够正确执行 .class 文件，就可以运行在诸如 Linux、Windows、MacOS 等平台上了。
 
@@ -51,9 +51,9 @@ Java 字节码一般都比较容易读懂，这从侧面上证明 Java 语言的
 
 而 Java 程序和我们通常使用的 C++ 程序有什么不同呢？这里用两张图进行说明。
 
-![](/img/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/%E6%99%AE%E9%80%9A%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E4%BA%A7%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png)
+![](/img/Java/JVM/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/%E6%99%AE%E9%80%9A%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E4%BA%A7%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png)
 
-![](/img/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/Java%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E4%BA%A7%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png)
+![](/img/Java/JVM/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/Java%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E4%BA%A7%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png)
 
 对比这两张图可以看到 C++ 程序是编译成操作系统能够识别的 .exe 文件，而 Java 程序是编译成 JVM 能够识别的 .class 文件，然后由 JVM 负责调用系统函数执行程序。
 
@@ -67,13 +67,13 @@ Java 字节码一般都比较容易读懂，这从侧面上证明 Java 语言的
 
 对于 JDK 来说，就更庞大了一些。除了 JRE，JDK 还提供了一些非常好用的小工具，比如 javac、java、jar 等。它是 Java 开发的核心。
 
-![](/img/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/JVM%E3%80%81JRE%E3%80%81JDK%E5%85%B3%E7%B3%BB.png)
+![](/img/Java/JVM/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/JVM%E3%80%81JRE%E3%80%81JDK%E5%85%B3%E7%B3%BB.png)
 
 ## 3. Java 虚拟机规范和 Java 语言规范的关系
 
 我们通常谈到 JVM，首先会想到它的垃圾回收器，其实它还有很多部分，比如对字节码进行解析的执行引擎等。广义上来讲，JVM 是一种规范，它是最为官方、最为准确的文档；狭义上来讲，由于我们使用 Hotspot 更多一些，我们一般在谈到这个概念时，会将它们等同起来。
 
-![](/img/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%A7%84%E8%8C%83%E5%92%8C%E8%AF%AD%E8%A8%80%E8%A7%84%E8%8C%83.png)
+![](/img/Java/JVM/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%A7%84%E8%8C%83%E5%92%8C%E8%AF%AD%E8%A8%80%E8%A7%84%E8%8C%83.png)
 
 左半部分是 Java 虚拟机规范，其实就是为输入和执行字节码提供一个运行环境。右半部分是我们常说的 Java 语法规范，比如 switch、for、泛型、lambda 等相关的程序，最终都会编译成字节码。而连接左右两部分的桥梁依然是 Java 的字节码。
 
@@ -129,7 +129,7 @@ JVM 就是靠解析这些 opcode 和操作数来完成程序的执行的。当�
 
 而其他大块数据，是存放在堆上的。
 
-![](/img/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/Java%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
+![](/img/Java/JVM/01_%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%20JVM%EF%BC%9F%E5%AE%83%E5%A4%84%E5%9C%A8%E4%BB%80%E4%B9%88%E4%BD%8D%E7%BD%AE%EF%BC%9F/Java%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
 
 ## 5. 总结
 
