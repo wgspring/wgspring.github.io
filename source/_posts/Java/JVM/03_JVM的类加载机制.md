@@ -316,3 +316,9 @@ OSGi 曾经非常流行，Eclipse 就使用 OSGi 作为插件系统的基础。O
 
 `$JAVA_HOME/jre/lib/endorsed`
 
+
+---
+
+JVM系列：
+上一篇：{% post_link Java/JVM/02_JVM内存管理 %}
+下一篇：{% post_link Java/JVM/04_从栈帧看字节码是如何在JVM中进行流转的 %}

@@ -106,4 +106,12 @@
 		],
 		"description": "insert url by markdown"
 	},
+	"InsertPostLink": {
+		"scope": "markdown",
+		"prefix": "hx_post_link",
+		"body": [
+			"{% post_link $1 %}"
+		],
+		"description": "insert post link"
+	},
 }

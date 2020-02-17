@@ -1,5 +1,5 @@
 ---
-title: 04_从栈帧看字节码是如何在 JVM 中进行流转的
+title: 04_从栈帧看字节码是如何在JVM中进行流转的
 date: 2020-02-15T19:35:17+08:00
 coverImage: https://i.loli.net/2020/02/15/E6Z1aKqAfNDgFLi.png
 categories: 
@@ -288,3 +288,8 @@ slot 为 3，就是 ret 变量。
 
 https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-6.html
 
+---
+
+JVM系列：
+上一篇：{% post_link Java/JVM/03_JVM的类加载机制 %}
+下一篇：{% post_link Java/JVM/05_JVM垃圾回收-上 %}
