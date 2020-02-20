@@ -1,5 +1,5 @@
 ---
-title: 06_JVM垃圾回收-中
+title: 06_JVM垃圾回收-下
 date: 2020-02-17T20:22:06+08:00
 coverImage: https://i.loli.net/2020/02/17/jfPYpVUlIr8EFmy.png
 categories: 
@@ -283,4 +283,4 @@ CMS（Concurrent Mark Sweep）收集器是以获取最短 GC 停顿时间为目�
 
 JVM系列：
 上一篇：{% post_link Java/JVM/05_JVM垃圾回收-上 %}
-下一篇：{% post_link Java/JVM/07_JVM垃圾回收-下 %}
+下一篇：{% post_link Java/JVM/07_JVM垃圾回收器--CMS %}

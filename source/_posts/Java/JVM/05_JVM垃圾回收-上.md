@@ -169,4 +169,4 @@ OOM 的全称是 Out Of Memory，那我们的内存区域有哪些会发生 OOM 
 
 JVM系列：
 上一篇：{% post_link Java/JVM/04_从栈帧看字节码是如何在JVM中进行流转的 %}
-下一篇：{% post_link Java/JVM/06_JVM垃圾回收-中 %}
+下一篇：{% post_link Java/JVM/06_JVM垃圾回收-下 %}
