@@ -116,6 +116,13 @@ markdown_it_plus:
   typographer:
   quotes: “”‘’
   pre_class: highlight
+  plugins:
+    - plugin:
+        name: markdown-it-katex
+        enable: true
+    - plugin:
+        name: markdown-it-mark
+        enable: false
 
 algolia:
   appId: "O1HERKE8Q2"
