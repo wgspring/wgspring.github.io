@@ -92,7 +92,7 @@ LFU在意的是访问频率，只需要每次有页面被访问时，对应频�
 
 当然上述做法同样要效率低一些，也可以采用HashMap优化，将时间复杂度降到O(1)。
 
-优化方法参考：[LeetCode](https://leetcode-cn.com/problems/lfu-cache/solution/shuo-de-ming-bai-by-jason-2/)
+优化方法参考：{% post_link 数据结构与算法/HashMap正反双映射--LRU时间复杂度O(1)实现 %}
 
 ---
 
