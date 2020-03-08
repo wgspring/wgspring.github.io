@@ -3,10 +3,10 @@ title: 08_JVM垃圾回收器--G1和ZGC
 date: 2020-02-20T19:09:37+08:00
 coverImage: https://i.loli.net/2020/02/20/jzZX8psK4Valgox.png
 categories: 
-    - JAVA
+    - Java
     - JVM
 tags: 
-    - JAVA
+    - Java
     - JVM
 ---
 <!-- toc -->

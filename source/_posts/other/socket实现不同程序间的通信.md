@@ -5,7 +5,7 @@ coverImage: https://i.loli.net/2020/02/14/OQq4v6JNdMsDHza.png
 categories: 
     - socket
 tags: 
-    - c++
+    - cpp
     - c#
     - socket
 ---

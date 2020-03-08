@@ -3,9 +3,9 @@ title: HashMap正反双映射--LRU时间复杂度O(1)实现
 date: 2020-02-27T10:25:17+08:00
 coverImage: https://s2.ax1x.com/2020/02/27/3dmzWD.jpg
 categories: 
-    - 数据结构和算法
+    - 数据结构与算法
 tags: 
-    - 数据结构和算法
+    - 数据结构与算法
     - 操作系统
     - 缓存技术
 ---

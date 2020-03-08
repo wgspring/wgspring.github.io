@@ -7,7 +7,6 @@ categories:
     - string
 tags: 
     - cpp
-    - c++
 ---
 <!-- toc -->
 在c++中`find()`和`find_first_of()`经常容易被混淆。一句话概括`find()`和`find_first_of()`：`find()`在s中找子串第一次出现的位置，`find_first_of()`在s中找一个数组中任意一个元素第一次出现的位置

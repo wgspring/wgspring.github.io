@@ -3,9 +3,9 @@ title: LRU和LFU算法
 date: 2020-02-26T15:36:12+08:00
 coverImage: https://s2.ax1x.com/2020/02/26/3UQuAx.jpg
 categories: 
-    - 数据结构和算法
+    - 数据结构与算法
 tags: 
-    - 数据结构和算法
+    - 数据结构与算法
     - 操作系统
     - 缓存技术
 ---
