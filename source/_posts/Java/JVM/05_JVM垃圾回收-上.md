@@ -52,9 +52,9 @@ GC Roots 包括：
 ![](/img/Java/JVM/05_JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-%E4%B8%8A/GC%20root%E7%A7%8D%E7%B1%BB.png)
 
 这些 GC Roots 大体可以分为三大类，下面这种说法更加好记一些：
-- 活动线程相关的各种引用。
-- 类的静态变量的引用。
-- JNI 引用。
+- 活动线程相关的各种引用（Java虚拟机栈中的内容）。
+- 类的常量和静态变量的引用。
+- JNI（Java Native Interface） 引用。
 
 有两个注意点：
 - 我们这里说的是活跃的引用，而不是对象，对象是不能作为 GC Roots 的。
