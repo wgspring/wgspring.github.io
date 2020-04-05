@@ -8,6 +8,7 @@ tags:
     - 数据结构与算法
     - 操作系统
     - 缓存技术
+    - HashMap
 ---
 <!-- toc -->
 该文章受LeetCode上面的[一道题目](https://leetcode-cn.com/problems/lfu-cache/)启发。题目要求在时间复杂度O(1)的情况下实现LRU缓存算法。
